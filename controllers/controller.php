@@ -74,6 +74,13 @@ class controller{
 		require_once 'views/allDocuments.php';
         require_once 'views/footerAlumno.inc';
 	}
+	#Método para destruir variables de sesion;
+	public function closeSession(){
+		session_start();
+		session_destroy();
+		$myController = new controller();
+		$myController->Index();	
+	}
 
 }
 

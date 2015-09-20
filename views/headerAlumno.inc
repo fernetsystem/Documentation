@@ -39,7 +39,7 @@
               <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
               <li><a href="#">Proyecto de cooperación</a></li>
               <li><a href="#">Informes</a></li>
-              <li><a href="#">Cerrar sesion</a></li>
+              <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
@@ -47,7 +47,7 @@
               <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
               <li><a href="#">Proyecto de cooperación</a></li>
               <li><a href="#">Informes</a></li>
-              <li><a href="#">Cerrar sesion</a></li>
+              <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile">
           <i class="mdi-navigation-menu"></i>
