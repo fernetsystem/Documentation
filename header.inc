@@ -6,3 +6,24 @@
 	<link rel="stylesheet" href="css/materialize.min.css">
 </head>
 <body>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper blue-grey darken-3" >
+				<a href="#" class="brand-logo">LOGO</a>
+				<ul class="right hide-on-med-and-down">
+			        <li><a href="#">Estudiantes</a></li>
+			        <li><a href="#">Empresa</a></li>
+			        <li><a href="#">Iniciar sesion</a></li>
+		      	</ul>
+				<ul class="side-nav" id="nav-mobile">
+					<li><a href="#">Estudiantes</a></li>
+			        <li><a href="#">Empresas</a></li>
+			        <li><a href="#">Iniciar sesion</a></li>
+      			</ul>
+				<a class="button-collapse" href="#" data-activates="nav-mobile">
+					<i class="mdi-navigation-menu"></i>
+				</a>
+			</div>
+		</nav>
+	</div>
+
