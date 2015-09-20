@@ -40,6 +40,16 @@ class controller{
 		$myController = new controller();
 		$myController->formAddLogin();
 	}
+	public function fillDataAlumno(){
+		//Tomar la variable de sesion por que los campos desabilitados no responden al request
+		session_start();
+		$datos =$this->myModel->get_data_alumno($_SESSION['matr'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['crp'],$_REQUEST['tel']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
 	#Mandar a llamar el formulario para registrar alumno
 	public function formAddAlum(){
         require_once 'views/header.inc';
@@ -53,7 +63,7 @@ class controller{
         require_once 'views/footer.inc';
 	}
 	#Mandar a llamar el formulario de los datos del alumno
-	public function dataAlumno(){
+	public function formDataAlumno(){
 		require_once 'views/headerAlumno.inc';
 		require_once 'views/fillDataAlumno.php';
         require_once 'views/footerAlumno.inc';

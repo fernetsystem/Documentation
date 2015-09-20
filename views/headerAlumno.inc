@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="css/materialize.min.css">
 </head>
 <body>
-  
+
 <!--<div class="container">
 	   		<a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only">
 	   			<i class="mdi-navigation-menu" style="font-size:300%;"></i>
@@ -35,7 +35,7 @@
         <a href="#" class="brand-logo">LOGO</a>
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
-              <li><a href="index.php?c=controller&a=dataAlumno&; ?>">Mis Datos</a></li>
+              <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
               <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
               <li><a href="#">Proyecto de cooperación</a></li>
               <li><a href="#">Informes</a></li>
@@ -43,7 +43,7 @@
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
-              <li><a href="index.php?c=controller&a=dataAlumno&; ?>">Mis Datos</a></li>
+              <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
               <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
               <li><a href="#">Proyecto de cooperación</a></li>
               <li><a href="#">Informes</a></li>

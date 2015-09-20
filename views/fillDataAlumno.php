@@ -3,11 +3,11 @@
 <div class="row">
 	<div class="col s2"></div>
 	<div class="col s8">
-		<form action="index.php?c=controller&a=registraAlumno&mat=mat&email=email&pass=pass&; ?>" method="post">
+		<form action="index.php?c=controller&a=fillDataAlumno&mat=mat&nom=nom&pat=pat&mate=mate&crp=crp&te=tel; ?>" method="post">
 			<div class="row">
 				<div class="input-field col s6">
 					<input disabled value=<?php echo $_SESSION['matr']; ?> type="text" id="mat"name="mat">
-					<label for="matricula">Matricula:</label>
+					<label for="mat">Matricula:</label>
 				</div>
 					<div class="input-field col s6">
 					<input disabled value=<?php echo $_SESSION['email']; ?> type="text" id="email"name="email">
