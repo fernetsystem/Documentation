@@ -15,7 +15,14 @@ class controller{
 	public function valida(){
 		$datos = $this->myModel->get_login($_REQUEST['mat'],$_REQUEST['pass']);
 		if($datos > 0){
+			session_start();
+			$_SESSION['matr'] = $_REQUEST['mat'];;
 			$getData=$this->myModel->get_matricula($_REQUEST['mat']);
+			foreach ($getData as $dato) {
+            	$_SESSION['email']=$dato['email'];
+            }
+            $_SESSION['email'];
+			$_SESSION['matr'];
 			require_once 'views/headerAlumno.inc';
 			require_once 'views/homeAlumno.php';
 			require_once 'views/footerAlumno.inc';
