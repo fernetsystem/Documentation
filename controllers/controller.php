@@ -21,6 +21,18 @@ class controller{
 			echo "ERROR";
 		}
 	}
+	#Mandar a llamar el formulario para registrar alumno
+	public function formAddAlum(){
+        require_once 'header.inc';
+		require_once 'views/registrarUser.php';
+        require_once 'footer.inc';
+	}
+	#Mandar a llamar el formulario para logearce
+	public function formAddLogin(){
+        require_once 'header.inc';
+		require_once 'views/loginUser.php';
+        require_once 'footer.inc';
+	}
 
 }
 
