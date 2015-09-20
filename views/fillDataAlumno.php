@@ -1,3 +1,4 @@
+<?php  session_start(); ?>
 <h3>Mis Datos</h3>
 <div class="row">
 	<div class="col s2"></div>
@@ -5,11 +6,11 @@
 		<form action="index.php?c=controller&a=registraAlumno&mat=mat&email=email&pass=pass&; ?>" method="post">
 			<div class="row">
 				<div class="input-field col s6">
-					<input type="text" id="mat"name="mat">
+					<input disabled value=<?php echo $_SESSION['matr']; ?> type="text" id="mat"name="mat">
 					<label for="matricula">Matricula:</label>
 				</div>
 					<div class="input-field col s6">
-					<input type="text" id="email"name="email">
+					<input disabled value=<?php echo $_SESSION['email']; ?> type="text" id="email"name="email">
 					<label for="email">Email:</label>
 				</div>
 				<div class="input-field col s4">
