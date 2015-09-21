@@ -7,14 +7,13 @@ class controller{
 		$this->myModel = new model();
 	}
 	public function Index(){
-        require_once 'views/header.inc';
-		require_once 'views/loginUser.php';
-        require_once 'views/footer.inc';
+        require_once 'views/header.inc';	require_once 'views/loginUser.php';        require_once 'views/footer.inc';
 	}
 
 	public function valida(){
 		$datos = $this->myModel->get_login($_REQUEST['mat'],$_REQUEST['pass']);
 		if($datos > 0){
+			//Obtener la matricula al logeo y pasarla a variable de sesion
 			session_start();
 			$_SESSION['matr'] = $_REQUEST['mat'];;
 			$getData=$this->myModel->get_matricula($_REQUEST['mat']);
@@ -23,9 +22,7 @@ class controller{
             }
             $_SESSION['email'];
 			$_SESSION['matr'];
-			require_once 'views/headerAlumno.inc';
-			require_once 'views/homeAlumno.php';
-			require_once 'views/footerAlumno.inc';
+			require_once 'views/headerAlumno.inc';				require_once 'views/homeAlumno.php';			require_once 'views/footerAlumno.inc';
 		}else{
 			echo "ERROR";
 		}
@@ -52,27 +49,36 @@ class controller{
 	}
 	#Mandar a llamar el formulario para registrar alumno
 	public function formAddAlum(){
-        require_once 'views/header.inc';
-		require_once 'views/registrarUser.php';
+        require_once 'views/header.inc';		
+        require_once 'views/registrarUser.php';        
         require_once 'views/footer.inc';
 	}
 	#Mandar a llamar el formulario para logearce
 	public function formAddLogin(){
-        require_once 'views/header.inc';
-		require_once 'views/loginUser.php';
+        require_once 'views/header.inc';		
+        require_once 'views/loginUser.php';        
         require_once 'views/footer.inc';
 	}
 	#Mandar a llamar el formulario de los datos del alumno
 	public function formDataAlumno(){
-		require_once 'views/headerAlumno.inc';
-		require_once 'views/fillDataAlumno.php';
-        require_once 'views/footerAlumno.inc';
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/fillDataAlumno.php';        
+		require_once 'views/footerAlumno.inc';
 	}
-	#Mandar a llamar el formulario de todos los documentos
-	public function formDocuments(){
-		require_once 'views/headerAlumno.inc';
-		require_once 'views/allDocuments.php';
-        require_once 'views/footerAlumno.inc';
+	#Mandar a llamar el formulario de todos los documentos de estancia1
+	public function formDocumentsEstancias1(){
+		session_start();
+		$datos = $this->myModel->fill_documents_estancia1($_SESSION['matr']);
+		
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/allDocumentsEstancias1.php';        
+		require_once 'views/footerAlumno.inc';
+	}
+		#Mandar a llamar el formulario de todos los documentos de estancia1
+	public function formDocumentsEstancias2(){
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/allDocumentsEstancias1.php';        
+		require_once 'views/footerAlumno.inc';
 	}
 	#Método para destruir variables de sesion;
 	public function closeSession(){
