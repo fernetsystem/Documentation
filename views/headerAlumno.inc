@@ -36,17 +36,17 @@
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
-              <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
-              <li><a href="#">Proyecto de cooperación</a></li>
-              <li><a href="#">Informes</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estancias I</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estancias II</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
-              <li><a href="index.php?c=controller&a=formDocuments&; ?">Documentos</a></li>
-              <li><a href="#">Proyecto de cooperación</a></li>
-              <li><a href="#">Informes</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estancias I</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estancias II</a></li>
+              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile">
