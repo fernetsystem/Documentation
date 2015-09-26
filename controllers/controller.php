@@ -7,7 +7,9 @@ class controller{
 		$this->myModel = new model();
 	}
 	public function Index(){
-        require_once 'views/header.inc';	require_once 'views/loginUser.php';        require_once 'views/footer.inc';
+        require_once 'views/header.inc';	
+        require_once 'views/loginUser.php';        
+        require_once 'views/footer.inc';
 	}
 
 	public function valida(){
@@ -22,7 +24,9 @@ class controller{
             }
             $_SESSION['email'];
 			$_SESSION['matr'];
-			require_once 'views/headerAlumno.inc';				require_once 'views/homeAlumno.php';			require_once 'views/footerAlumno.inc';
+			require_once 'views/headerAlumno.inc';				
+			require_once 'views/homeAlumno.php';			
+			require_once 'views/footerAlumno.inc';
 		}else{
 			echo "ERROR";
 		}
@@ -87,7 +91,19 @@ class controller{
 		$myController = new controller();
 		$myController->Index();	
 	}
-
+	public function fillDataEnterpriseEs1(){
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/fillDataEnterpriseE1.php';        
+		require_once 'views/footerAlumno.inc';
+	}
+	public function registraEnterpriseEs1(){
+		$datos = $this->myModel->insert_enterprise($_REQUEST['nom_emp'],$_REQUEST['tel'],$_REQUEST['email']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}		
+	}
 }
 
 ?>
