@@ -12,10 +12,8 @@
         		echo "<tr>";
 	        		echo "<td>".$data['documento']."</td>";
 	        		echo "<td>".$data['formato']."</td>";
-	        		#echo "<td>".$data['estado']."</td>";
-	        		echo "<td><a href='#' class='waves-effect waves-light btn z-depth-1' style='height:35px;'>Ver</a></td>";
-
-        		echo "<td>";
+	        		echo "<td><a href='index.php?c=controller&a=printNdoc&no_documento=".$data['no_documento']."' class='waves-effect waves-light btn z-depth-1'>Ver</a></td>";
+        		echo "<tr>";
         	} ?>
         </tbody>
 </table>

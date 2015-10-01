@@ -2,9 +2,13 @@
 class model{
 	private $db;
 	private $users=array();
+    private $empresas=array();
+    private $documentos=array();
 	public function __construct(){
 		$this->db=Conectar::conexion();
 		$this->users=array();
+        $this->empresas=array();
+        $this->documentos=array();
 	}
 	public function get_login($matricula,$pass){
 		$contador=0;
@@ -43,14 +47,35 @@ class model{
         return $this->users;
     }
     public function fill_documents_estancia1($matricula){
-        $consulta=$this->db->query("select documento,formato,estado from procesos_documentos where matricula=$matricula and proceso='Estancias1'");
+        $consulta=$this->db->query("select * from procesos_documentos where matricula=$matricula and proceso='Estancias1'");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->users[]=$filas;
+            $this->documentos[]=$filas;
         }
-        return $this->users;   
+        return $this->documentos;   
     }
     public function insert_enterprise($nom_emp,$tel,$email){
         $consulta=$this->db->query("insert into empresas (empresa,telefono,correo)values('$nom_emp','$tel','$email')");
+    }
+    public function search_enterprise($nom_emp){
+        $contador=0;
+        $consulta=$this->db->query("select * from empresas where empresa like '%$nom_emp%'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->empresas[]=$filas;
+            $contador++;
+        }
+        if($contador>0){
+           // return 1;
+        }else{
+          //  return 0;
+        }
+        return $this->empresas;   
+    }
+    public function search_document($no_documento){
+        $consulta=$this->db->query("select * from procesos_documentos where no_documento=$no_documento");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->documentos[]=$filas;       
+        }
+        return $this->documentos;
     }
 }
 	

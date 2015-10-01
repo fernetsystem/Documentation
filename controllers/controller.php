@@ -97,13 +97,28 @@ class controller{
 		require_once 'views/footerAlumno.inc';
 	}
 	public function registraEnterpriseEs1(){
-		$datos = $this->myModel->insert_enterprise($_REQUEST['nom_emp'],$_REQUEST['tel'],$_REQUEST['email']);
-		if($datos > 0){
-			echo "SUCCESS";
-		}else{
-			echo "ERROR";
-		}		
+		$datos = $this->myModel->search_enterprise($_REQUEST['nom_emp']);
+		echo "EMPRESAS ENCONTRADAS<br/>";
+		foreach ($datos as $dato) {
+			echo "->".$dato['empresa']."<br/>";
+		}
+		//$datos = $this->myModel->insert_enterprise($_REQUEST['nom_emp'],$_REQUEST['tel'],$_REQUEST['email']);
+		
 	}
+	public function viewDocumentComprimiso(){
+		require_once 'views/documentCartaCompromiso.php';
+	}	
+	public function viewDocumentPresentacion(){
+		require_once 'views/documentCartaDePresentacion.php';
+	}
+	public function viewDocumentInformeQuin(){
+		require_once 'views/documentCartaInformeQuincenal.php';
+	}
+	public function printNdoc(){
+		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
+		echo $_REQUEST['no_documento'];
+	}
+
 }
 
 ?>
