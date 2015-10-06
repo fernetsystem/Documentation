@@ -109,10 +109,25 @@ class controller{
 		$myController->Index();	
 	}
 	public function fillDataEnterpriseEs1(){
-		require_once 'views/headerAlumno.inc';		
-		require_once 'views/fillDataEnterpriseE1.php';        
-		require_once 'views/footerAlumno.inc';
+		session_start();
+		$materia = "Estancias 1";
+		$validaMateria="";
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		foreach ($getData as $dato) {
+            	$validaMateria=$dato['estado'];
+        }
+        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
+        	$datos = $this->myModel->fill_documents_estancia1($_SESSION['matr']);
+			require_once 'views/headerAlumno.inc';		
+			require_once 'views/fillDataEnterpriseE1.php';        
+			require_once 'views/footerAlumno.inc';
+        }else{
+        	require_once 'views/headerAlumno.inc';
+        	echo "<h3>No esta habilitado este proceso</h3>";
+        	require_once 'views/footerAlumno.inc';
+		}
 	}
+	
 	public function registraEnterpriseEs1(){
 		$datos = $this->myModel->search_enterprise($_REQUEST['nom_emp']);
 		echo "EMPRESAS ENCONTRADAS<br/>";

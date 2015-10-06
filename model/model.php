@@ -53,6 +53,14 @@ class model{
         }
         return $this->documentos;   
     }
+
+    public function validate_materia_aprobada($matricula,$procesoAconsultar){
+        $consulta=$this->db->query("select proceso,estado from procesos where matricula=$matricula and proceso='$procesoAconsultar'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->documentos[]=$filas;
+        }
+        return $this->documentos;  
+    }
     public function insert_enterprise($nom_emp,$tel,$email){
         $consulta=$this->db->query("insert into empresas (empresa,telefono,correo)values('$nom_emp','$tel','$email')");
     }
