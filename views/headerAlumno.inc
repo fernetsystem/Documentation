@@ -37,16 +37,16 @@
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
               <li><a href="index.php?c=controller&a=fillDataEnterpriseEs1&; ?">Estancias I</a></li>
-              <li><a href="index.php?c=controller&a=fillDataEnterpriseEs1&; ?">Estancias II</a></li>
-              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estadias</a></li>
+              <li><a href="index.php?c=controller&a=fillDataEnterpriseEs2&; ?">Estancias II</a></li>
+              <li><a href="index.php?c=controller&a=fillDataEnterpriseEstadias&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAlumno&; ?>">Mis Datos</a></li>
-              <li><a href="index.php?c=controller&a=formDocumentsEstancias1&; ?">Estancias I</a></li>
-              <li><a href="index.php?c=controller&a=formDocumentsEstancias2&; ?">Estancias II</a></li>
-              <li><a href="index.php?c=controller&a=formDocuments&; ?">Estadias</a></li>
+              <li><a href="index.php?c=controller&a=fillDataEnterpriseEs1&; ?">Estancias I</a></li>
+              <li><a href="index.php?c=controller&a=fillDataEnterpriseEs2&; ?">Estancias II</a></li>
+              <li><a href="index.php?c=controller&a=fillDataEnterpriseEstadias&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile">

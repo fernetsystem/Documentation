@@ -89,7 +89,8 @@ class controller{
 	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias1(){
 		session_start();
-		$datos = $this->myModel->fill_documents_estancia1($_SESSION['matr']);
+		$materia="Estancias1";
+		$datos = $this->myModel->fill_documents($_SESSION['matr'],$materia);
 		
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/allDocumentsEstancias1.php';        
@@ -117,9 +118,44 @@ class controller{
             	$validaMateria=$dato['estado'];
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
-        	$datos = $this->myModel->fill_documents_estancia1($_SESSION['matr']);
 			require_once 'views/headerAlumno.inc';		
 			require_once 'views/fillDataEnterpriseE1.php';        
+			require_once 'views/footerAlumno.inc';
+        }else{
+        	require_once 'views/headerAlumno.inc';
+        	echo "<h3>No esta habilitado este proceso</h3>";
+        	require_once 'views/footerAlumno.inc';
+		}
+	}
+	public function fillDataEnterpriseEs2(){
+		session_start();
+		$materia = "Estancias 2";
+		$validaMateria="";
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		foreach ($getData as $dato) {
+            	$validaMateria=$dato['estado'];
+        }
+        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
+			require_once 'views/headerAlumno.inc';		
+			require_once 'views/fillDataEnterpriseE2.php';        
+			require_once 'views/footerAlumno.inc';
+        }else{
+        	require_once 'views/headerAlumno.inc';
+        	echo "<h3>No esta habilitado este proceso</h3>";
+        	require_once 'views/footerAlumno.inc';
+		}
+	}
+	public function fillDataEnterpriseEstadias(){
+		session_start();
+		$materia = "Estadias";
+		$validaMateria="";
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		foreach ($getData as $dato) {
+            	$validaMateria=$dato['estado'];
+        }
+        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
+			require_once 'views/headerAlumno.inc';		
+			echo "<h4>Contruyendo formulario</h4>";     
 			require_once 'views/footerAlumno.inc';
         }else{
         	require_once 'views/headerAlumno.inc';

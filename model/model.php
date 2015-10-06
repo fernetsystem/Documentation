@@ -46,8 +46,8 @@ class model{
         }
         return $this->users;
     }
-    public function fill_documents_estancia1($matricula){
-        $consulta=$this->db->query("select * from procesos_documentos where matricula=$matricula and proceso='Estancias1'");
+    public function fill_documents($matricula,$procesoAconsultar){
+        $consulta=$this->db->query("select * from procesos_documentos where matricula=$matricula and proceso='$procesoAconsultar'");
         while ($filas=$consulta->fetch_assoc()) {
             $this->documentos[]=$filas;
         }
