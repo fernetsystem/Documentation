@@ -186,6 +186,12 @@ class controller{
 		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
 		echo $_REQUEST['no_documento'];
 	}
+	#Mandar a llamar el formulario para sugerir empresa
+	public function suggestEnterprise(){
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/suggest_enterprise.php';        
+		require_once 'views/footerAlumno.inc';
+	}
 
 }
 
