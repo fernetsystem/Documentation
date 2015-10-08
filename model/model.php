@@ -1,14 +1,10 @@
 <?php 
 class model{
 	private $db;
-	private $users=array();
-    private $empresas=array();
-    private $documentos=array();
+	private $myDataGet=array();
 	public function __construct(){
 		$this->db=Conectar::conexion();
-		$this->users=array();
-        $this->empresas=array();
-        $this->documentos=array();
+		$this->myDataGet=array();
 	}
 	public function get_login($matricula,$pass){
 		$contador=0;
@@ -42,24 +38,24 @@ class model{
     public function get_matricula($matricula){
     $consulta=$this->db->query("select * from accounts where matricula=".$matricula."");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->users[]=$filas;
+            $this->myDataGet[]=$filas;
         }
-        return $this->users;
+        return $this->myDataGet;
     }
     public function fill_documents($matricula,$procesoAconsultar){
         $consulta=$this->db->query("select * from procesos_documentos where matricula=$matricula and proceso='$procesoAconsultar'");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->documentos[]=$filas;
+            $this->myDataGet[]=$filas;
         }
-        return $this->documentos;   
+        return $this->myDataGet;   
     }
 
     public function validate_materia_aprobada($matricula,$procesoAconsultar){
         $consulta=$this->db->query("select proceso,estado from procesos where matricula=$matricula and proceso='$procesoAconsultar'");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->documentos[]=$filas;
+            $this->myDataGet[]=$filas;
         }
-        return $this->documentos;  
+        return $this->myDataGet;  
     }
     public function insert_enterprise($nom_emp,$tel,$email){
         $consulta=$this->db->query("insert into empresas (empresa,telefono,correo)values('$nom_emp','$tel','$email')");
@@ -68,7 +64,7 @@ class model{
         $contador=0;
         $consulta=$this->db->query("select * from empresas where empresa like '%$nom_emp%'");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->empresas[]=$filas;
+            $this->myDataGet[]=$filas;
             $contador++;
         }
         if($contador>0){
@@ -76,14 +72,21 @@ class model{
         }else{
           //  return 0;
         }
-        return $this->empresas;   
+        return $this->myDataGet;   
     }
     public function search_document($no_documento){
         $consulta=$this->db->query("select * from procesos_documentos where no_documento=$no_documento");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->documentos[]=$filas;       
+            $this->myDataGet[]=$filas;       
         }
-        return $this->documentos;
+        return $this->myDataGet;
+    }
+    public function recover_pass($email){
+        $consulta=$this->db->query("select * from accounts where email='$email'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;
     }
 }
 	

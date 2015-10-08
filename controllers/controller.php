@@ -182,6 +182,7 @@ class controller{
 	public function viewDocumentInformeQuin(){
 		require_once 'views/documentCartaInformeQuincenal.php';
 	}
+	#Obtener id del documento
 	public function printNdoc(){
 		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
 		echo $_REQUEST['no_documento'];
@@ -191,6 +192,29 @@ class controller{
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/suggest_enterprise.php';        
 		require_once 'views/footerAlumno.inc';
+	}
+	#Mandar a llamar el formulario para recuperar contra
+	public function formRecoverPass(){
+   		require_once 'views/header.inc';	
+        require_once 'views/myPassRecover.php';        
+        require_once 'views/footer.inc';
+	}
+	public function recoverPass(){
+		$subject = "Sistema estancias y estadias RECOVER PASS";
+		$from = "fernetsyste@gmail.com"; $p="";
+		$destino = $_REQUEST['emai'];
+		$datos = $this->myModel->recover_pass($_REQUEST['emai']);
+		foreach ($datos as $dato) {
+			$p=$dato['password'];
+		}
+		$myMsn = "Excelente dia!! Tu contraseña es: ".$p;
+		try {
+			mail($destino,$subject, $myMsn,$from);
+		} catch (Exception $e) {
+			echo "Error:".$e;
+		}
+		$myController = new controller();
+		$myController->Index();	
 	}
 
 }
