@@ -10,8 +10,8 @@
 			</div>
 			<div class="row">
 				<div class="input-field col s10 m6 l6">
-						<input type="text" id="pass"name="pass">
-						<label for="pass">Contraseña:</label>
+						<input type="password" id="pass"name="pass">
+						<label for="password">Contraseña:</label>
 				</div>
 			</div>
 			<button class="btn waves-effect waves-light" type="submit">Ingresar</button>

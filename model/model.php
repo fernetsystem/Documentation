@@ -8,7 +8,7 @@ class model{
 	}
 	public function get_login($matricula,$pass){
 		$contador=0;
-		$consulta=$this->db->query("select * from accounts where matricula='".$matricula."' and password='".$pass."'");
+		$consulta=$this->db->query("select * from accounts where matricula=".$matricula." and password='".$pass."'");
         while ($filas=$consulta->fetch_assoc()) {
             $contador++;
         }
@@ -18,16 +18,24 @@ class model{
         	return 0;
         }
 	}
-    public function get_registro_alumno($matricula,$email,$pass){
-        $consulta=$this->db->query("insert into accounts values($matricula,'$email','$pass','ALUMNO')");
+    public function get_registro_alumno($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr){
+        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','H','$email','$pass','ALUMNO',$carr,'$crp')");
         if($consulta>0){
             return 1;
         }else{
             return 0;
         }
     }
-    public function get_data_alumno($matricula,$nom,$pat,$mat,$curp,$tel){
-        $consulta=$this->db->query("insert into data_alumno values($matricula,'$nom','$pat','$mat','$curp','$tel')");
+    public function get_registro_asesor($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr){
+        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','H','$email','$pass','ASESOR',$carr,'$crp')");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public function edit_data($sesMat,$mat,$pass,$nom,$pat,$mate,$email,$crp){
+        $consulta=$this->db->query("update accounts set matricula=$mat, password='$pass' ,nombre='$nom', paterno='$pat', materno='$mate', email='$email',curp='$crp' where matricula=$sesMat");
         if($consulta>0){
             return 1;
         }else{
@@ -36,7 +44,7 @@ class model{
     }
     
     public function get_matricula($matricula){
-    $consulta=$this->db->query("select * from accounts where matricula=".$matricula."");
+        $consulta=$this->db->query("select * from accounts where matricula=".$matricula."");
         while ($filas=$consulta->fetch_assoc()) {
             $this->myDataGet[]=$filas;
         }
@@ -51,7 +59,7 @@ class model{
     }
 
     public function validate_materia_aprobada($matricula,$procesoAconsultar){
-        $consulta=$this->db->query("select proceso,estado from procesos where matricula=$matricula and proceso='$procesoAconsultar'");
+        $consulta=$this->db->query("select idmateria,estado_pro from procesos where matricula=$matricula and idmateria=$procesoAconsultar");
         while ($filas=$consulta->fetch_assoc()) {
             $this->myDataGet[]=$filas;
         }

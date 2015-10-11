@@ -49,7 +49,7 @@ class controller{
 		}
 	}
 	public function registraAlumno(){
-		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['email'],$_REQUEST['pass']);
+		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
@@ -58,10 +58,19 @@ class controller{
 		$myController = new controller();
 		$myController->formAddLogin();
 	}
-	public function fillDataAlumno(){
-		//Tomar la variable de sesion por que los campos desabilitados no responden al request
+	public function registraAsesor(){
+		$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+		$myController = new controller();
+		$myController->formAddLogin();	
+	}
+	public function editData(){#probar editanto matricula
 		session_start();
-		$datos =$this->myModel->get_data_alumno($_SESSION['matr'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['crp'],$_REQUEST['tel']);
+		$datos = $this->myModel->edit_data($_SESSION['matr'],$_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
@@ -82,8 +91,10 @@ class controller{
 	}
 	#Mandar a llamar el formulario de los datos del alumno
 	public function formDataAlumno(){
+		session_start();
+		$datos = $this->myModel->get_matricula($_SESSION['matr']);
 		require_once 'views/headerAlumno.inc';		
-		require_once 'views/fillDataAlumno.php';        
+		require_once 'views/dataAlumno.php';        
 		require_once 'views/footerAlumno.inc';
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
@@ -111,11 +122,10 @@ class controller{
 	}
 	public function fillDataEnterpriseEs1(){
 		session_start();
-		$materia = "Estancias 1";
 		$validaMateria="";
-		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],1);
 		foreach ($getData as $dato) {
-            	$validaMateria=$dato['estado'];
+            	$validaMateria=$dato['estado_pro'];
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
 			require_once 'views/headerAlumno.inc';		
@@ -129,11 +139,10 @@ class controller{
 	}
 	public function fillDataEnterpriseEs2(){
 		session_start();
-		$materia = "Estancias 2";
 		$validaMateria="";
-		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],2);
 		foreach ($getData as $dato) {
-            	$validaMateria=$dato['estado'];
+            	$validaMateria=$dato['estado_pro'];
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
 			require_once 'views/headerAlumno.inc';		
@@ -201,7 +210,7 @@ class controller{
 	}
 	public function recoverPass(){
 		$subject = "Sistema estancias y estadias RECOVER PASS";
-		$from = "fernetsyste@gmail.com"; $p="";
+		$from = "fernetsystem@gmail.com"; $p="";
 		$destino = $_REQUEST['emai'];
 		$datos = $this->myModel->recover_pass($_REQUEST['emai']);
 		foreach ($datos as $dato) {
