@@ -57,7 +57,13 @@ class model{
         }
         return $this->myDataGet;   
     }
-
+    public function search_document($no_documento){
+        $consulta=$this->db->query("select * from procesos_documentos where no_documento=$no_documento");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;
+    }
     public function validate_materia_aprobada($matricula,$procesoAconsultar){
         $consulta=$this->db->query("select idmateria,estado_pro from procesos where matricula=$matricula and idmateria=$procesoAconsultar");
         while ($filas=$consulta->fetch_assoc()) {
@@ -73,26 +79,19 @@ class model{
             return 0;
         }
     }
-    public function search_enterprise($nom_emp){
-        $contador=0;
-        $consulta=$this->db->query("select * from empresas where empresa like '%$nom_emp%'");
+    public function get_list_enterprises(){
+        $consulta=$this->db->query("select RFC,nombre,direccion,telefono,correo from empresas where estado_emp=1;");
         while ($filas=$consulta->fetch_assoc()) {
             $this->myDataGet[]=$filas;
-            $contador++;
-        }
-        if($contador>0){
-           // return 1;
-        }else{
-          //  return 0;
         }
         return $this->myDataGet;   
     }
-    public function search_document($no_documento){
-        $consulta=$this->db->query("select * from procesos_documentos where no_documento=$no_documento");
+    public function get_list_enterprises_suggest(){
+        $consulta=$this->db->query("select RFC,nombre,direccion,telefono,correo from empresas where estado_emp=0;");
         while ($filas=$consulta->fetch_assoc()) {
-            $this->myDataGet[]=$filas;       
+            $this->myDataGet[]=$filas;
         }
-        return $this->myDataGet;
+        return $this->myDataGet;   
     }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");

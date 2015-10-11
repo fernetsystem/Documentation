@@ -113,12 +113,19 @@ class controller{
 		require_once 'views/allDocumentsEstancias1.php';        
 		require_once 'views/footerAlumno.inc';
 	}
-	#Método para destruir variables de sesion;
-	public function closeSession(){
-		session_start();
-		session_destroy();
-		$myController = new controller();
-		$myController->Index();	
+	public function viewDocumentComprimiso(){
+		require_once 'views/documentCartaCompromiso.php';
+	}	
+	public function viewDocumentPresentacion(){
+		require_once 'views/documentCartaDePresentacion.php';
+	}
+	public function viewDocumentInformeQuin(){
+		require_once 'views/documentCartaInformeQuincenal.php';
+	}
+	#Obtener id del documento
+	public function printNdoc(){
+		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
+		echo $_REQUEST['no_documento'];
 	}
 	public function fillDataEnterpriseEs1(){
 		session_start();
@@ -171,7 +178,13 @@ class controller{
         	require_once 'views/footerAlumno.inc';
 		}
 	}
-	
+	#Mandar a llamar el formulario para sugerir empresa
+	public function suggestEnterprise(){
+		require_once 'views/headerAlumno.inc';		
+		require_once 'views/suggest_enterprise.php';        
+		require_once 'views/footerAlumno.inc';
+	}
+	#Enviar sugerencia de empresa
 	public function sendSuggestEnterprise(){
 		$datos = $this->myModel->suggest_enterprise($_REQUEST['rfc'],$_REQUEST['nom_emp'],$_REQUEST['sec'],$_REQUEST['dir'],$_REQUEST['tel'],$_REQUEST['email']);
 			if($datos > 0){
@@ -180,25 +193,19 @@ class controller{
 			echo "ERROR";
 		}
 	}
-	public function viewDocumentComprimiso(){
-		require_once 'views/documentCartaCompromiso.php';
-	}	
-	public function viewDocumentPresentacion(){
-		require_once 'views/documentCartaDePresentacion.php';
+	public function listEnterprises(){
+		$datos = $this->myModel->get_list_enterprises();
+		require_once 'views/headerAdm.inc';				
+		require_once 'views/list_enterprises.php'; 
+		require_once 'views/footerAdm.inc';            		
+
 	}
-	public function viewDocumentInformeQuin(){
-		require_once 'views/documentCartaInformeQuincenal.php';
-	}
-	#Obtener id del documento
-	public function printNdoc(){
-		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
-		echo $_REQUEST['no_documento'];
-	}
-	#Mandar a llamar el formulario para sugerir empresa
-	public function suggestEnterprise(){
-		require_once 'views/headerAlumno.inc';		
-		require_once 'views/suggest_enterprise.php';        
-		require_once 'views/footerAlumno.inc';
+	public function listEnterprisesSuggest(){
+		$datos = $this->myModel->get_list_enterprises_suggest();
+		require_once 'views/headerAdm.inc';				
+		require_once 'views/list_enterprises_suggest.php'; 
+		require_once 'views/footerAdm.inc';            		
+
 	}
 	#Mandar a llamar el formulario para recuperar contra
 	public function formRecoverPass(){
@@ -220,6 +227,13 @@ class controller{
 		} catch (Exception $e) {
 			echo "Error:".$e;
 		}
+		$myController = new controller();
+		$myController->Index();	
+	}
+	#Método para destruir variables de sesion;
+	public function closeSession(){
+		session_start();
+		session_destroy();
 		$myController = new controller();
 		$myController->Index();	
 	}
