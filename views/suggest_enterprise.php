@@ -1,7 +1,7 @@
 <h2>Sugerir empresa</h2>
 <div class="row" >
 	<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
-		<form action="index.php?c=controller&a=registraEnterpriseEs1&nom_emp=nom_emp&tel=tel&email=email; ?>" method="post">
+		<form action="index.php?c=controller&a=sendSuggestEnterprise&rfc=rfc&nom_emp=nom_emp&sec=sec&dir=dir&tel=tel&email=email; ?>" method="post">
 			<div class="row">
 				<div class="input-field col s10 m6 l6">
 					<input type="text" id="rfc"name="rfc">

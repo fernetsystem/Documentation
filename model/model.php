@@ -65,8 +65,13 @@ class model{
         }
         return $this->myDataGet;  
     }
-    public function insert_enterprise($nom_emp,$tel,$email){
-        $consulta=$this->db->query("insert into empresas (empresa,telefono,correo)values('$nom_emp','$tel','$email')");
+    public function suggest_enterprise($rfc,$nom_emp,$sec,$dir,$tel,$email){
+        $consulta=$this->db->query("insert into empresas values('$rfc','$nom_emp',$sec,'$dir','$tel','$email',0)");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
     }
     public function search_enterprise($nom_emp){
         $contador=0;

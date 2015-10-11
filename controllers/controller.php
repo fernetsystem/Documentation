@@ -156,9 +156,8 @@ class controller{
 	}
 	public function fillDataEnterpriseEstadias(){
 		session_start();
-		$materia = "Estadias";
 		$validaMateria="";
-		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],$materia);
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],3);
 		foreach ($getData as $dato) {
             	$validaMateria=$dato['estado'];
         }
@@ -173,14 +172,13 @@ class controller{
 		}
 	}
 	
-	public function registraEnterpriseEs1(){
-		$datos = $this->myModel->search_enterprise($_REQUEST['nom_emp']);
-		echo "EMPRESAS ENCONTRADAS<br/>";
-		foreach ($datos as $dato) {
-			echo "->".$dato['empresa']."<br/>";
+	public function sendSuggestEnterprise(){
+		$datos = $this->myModel->suggest_enterprise($_REQUEST['rfc'],$_REQUEST['nom_emp'],$_REQUEST['sec'],$_REQUEST['dir'],$_REQUEST['tel'],$_REQUEST['email']);
+			if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
 		}
-		//$datos = $this->myModel->insert_enterprise($_REQUEST['nom_emp'],$_REQUEST['tel'],$_REQUEST['email']);
-		
 	}
 	public function viewDocumentComprimiso(){
 		require_once 'views/documentCartaCompromiso.php';
@@ -210,7 +208,7 @@ class controller{
 	}
 	public function recoverPass(){
 		$subject = "Sistema estancias y estadias RECOVER PASS";
-		$from = "fernetsystem@gmail.com"; $p="";
+		$p="";
 		$destino = $_REQUEST['emai'];
 		$datos = $this->myModel->recover_pass($_REQUEST['emai']);
 		foreach ($datos as $dato) {
@@ -218,7 +216,7 @@ class controller{
 		}
 		$myMsn = "Excelente dia!! Tu contraseña es: ".$p;
 		try {
-			mail($destino,$subject, $myMsn,$from);
+			mail($destino,$subject, $myMsn);
 		} catch (Exception $e) {
 			echo "Error:".$e;
 		}
