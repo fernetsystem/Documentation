@@ -59,14 +59,21 @@ class controller{
 		$myController->formAddLogin();
 	}
 	public function registraAsesor(){
-		$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
-		if($datos > 0){
-			echo "SUCCESS";
+		$exitsToken = $this->myModel->validate_token($_REQUEST['token'],$_REQUEST['mat']);
+		if ($exitsToken>0) {
+			echo "TOKEN VALIDO";
+			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
+			if($datos > 0){
+				echo "SUCCESS";
+			}else{
+				echo "ERROR";
+			}
+			$myController = new controller();
+			$myController->formAddLogin();				
 		}else{
-			echo "ERROR";
+			echo "TOKEN NO EXISTE";
 		}
-		$myController = new controller();
-		$myController->formAddLogin();	
+
 	}
 	public function editData(){#probar editanto matricula
 		session_start();
