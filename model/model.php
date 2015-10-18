@@ -101,6 +101,13 @@ class model{
             return 0;
         }
     }
+    public function all_tokens(){
+        $consulta=$this->db->query("select * from asesores");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {
