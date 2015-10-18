@@ -214,6 +214,27 @@ class controller{
 		require_once 'views/footerAdm.inc';            		
 
 	}
+	public function formTokensAdmin(){
+		require_once 'views/headerAdm.inc';				
+		require_once 'views/formTokensAdm.php'; 
+		$myController = new controller();
+		$myController->allTokens();	
+		require_once 'views/footerAdm.inc';            				
+	}
+	public function addTokenAsesor(){
+		$datos = $this->myModel->add_token_asesor($_REQUEST['token'],$_REQUEST['matr']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	public function allTokens(){
+		$datos = $this->myModel->all_tokens();
+				
+		require_once 'views/list_tokens.php'; 
+		
+	}
 	#Mandar a llamar el formulario para recuperar contra
 	public function formRecoverPass(){
    		require_once 'views/header.inc';	
