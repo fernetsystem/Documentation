@@ -18,7 +18,7 @@ class controller{
 		if($datos > 0){
 			//Obtener la matricula al logeo y pasarla a variable de sesion
 			session_start();
-			$_SESSION['matr'] = $_REQUEST['mat'];;
+			$_SESSION['matr'] = $_REQUEST['mat'];
 			$getData=$this->myModel->get_matricula($_REQUEST['mat']);
 			foreach ($getData as $dato) {
             	$_SESSION['email']=$dato['email'];
@@ -207,8 +207,7 @@ class controller{
 		require_once 'views/footerAdm.inc';            		
 
 	}
-	public function listEnterprisesSuggest(){
-		$datos = $this->myModel->get_list_enterprises_suggest();
+	public function listEnterprisesSuggest(){$datos = $this->myModel->get_list_enterprises_suggest();
 		require_once 'views/headerAdm.inc';				
 		require_once 'views/list_enterprises_suggest.php'; 
 		require_once 'views/footerAdm.inc';            		
@@ -235,6 +234,18 @@ class controller{
 		require_once 'views/list_tokens.php'; 
 		
 	}
+	#Mandar a llamar vista para ver grupos
+	public function listGroups(){
+		require_once 'views/headerAsesor.inc';				
+		require_once 'views/myGroups.php'; 
+		require_once 'views/footerAsesor.inc';	
+	}
+	public function groupSelect(){
+		require_once 'views/headerAsesor.inc';				
+		require_once 'views/insertProcessForAsesor.php'; 
+		require_once 'views/list_alumnos_asesor.php'; 
+		require_once 'views/footerAsesor.inc';	
+	}	
 	#Mandar a llamar el formulario para recuperar contra
 	public function formRecoverPass(){
    		require_once 'views/header.inc';	
