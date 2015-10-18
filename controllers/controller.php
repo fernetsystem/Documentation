@@ -96,12 +96,12 @@ class controller{
         require_once 'views/loginUser.php';        
         require_once 'views/footer.inc';
 	}
-	#Mandar a llamar el formulario de los datos del alumno
-	public function formDataAlumno(){
+	#Mandar a llamar el formulario de los datos de las cuentas
+	public function formData(){
 		session_start();
 		$datos = $this->myModel->get_matricula($_SESSION['matr']);
 		require_once 'views/headerAlumno.inc';		
-		require_once 'views/dataAlumno.php';        
+		require_once 'views/dataOfMyAccount.php';        
 		require_once 'views/footerAlumno.inc';
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
@@ -185,22 +185,22 @@ class controller{
         	require_once 'views/footerAlumno.inc';
 		}
 	}
-	#Mandar a llamar el formulario para sugerir empresa
+	#Mandar a llamar el formulario para sugerir empresa - Alumno
 	public function suggestEnterprise(){
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/suggest_enterprise.php';        
 		require_once 'views/footerAlumno.inc';
 	}
-	#Enviar sugerencia de empresa
+	#Enviar sugerencia de empresa - Alumno
 	public function sendSuggestEnterprise(){
 		$datos = $this->myModel->suggest_enterprise($_REQUEST['rfc'],$_REQUEST['nom_emp'],$_REQUEST['sec'],$_REQUEST['dir'],$_REQUEST['tel'],$_REQUEST['email']);
-			if($datos > 0){
+		if($datos > 0){
 			echo "SUCCESS";
 		}else{
 			echo "ERROR";
 		}
 	}
-	public function listEnterprises(){
+	public function listEnterprises(){ #View Asesor
 		$datos = $this->myModel->get_list_enterprises();
 		require_once 'views/headerAdm.inc';				
 		require_once 'views/list_enterprises.php'; 
