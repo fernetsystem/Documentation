@@ -17,8 +17,8 @@
               echo "<td>".$data['direccion']."</td>";
               echo "<td>".$data['telefono']."</td>";
               echo "<td>".$data['correo']."</td>";
-              echo "<td><a href='index.php?c=controller&a=printNdoc&' class='waves-effect waves-light btn z-depth-1'>Dar de alta</a></td>";
-              echo "<td><a href='index.php?c=controller&a=printNdoc&' class='waves-effect waves-light btn z-depth-1 red'>Eliminar</a></td>";
+              echo "<td><a href='index.php?c=controller&a=updateEstateEnterpriseAlta&rfc=".$data['RFC']."' class='waves-effect waves-light btn z-depth-1'>Dar de alta</a></td>";
+              echo "<td><a href='index.php?c=controller&a=deleteSuggesEnterprise&rfc=".$data['RFC']."' class='waves-effect waves-light btn z-depth-1 red'>Eliminar</a></td>";
      		    echo "</tr>";
         	} ?>
         </tbody>
