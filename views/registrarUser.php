@@ -69,11 +69,11 @@
 	<div id="test2" class="col s12">	
 	<div class="row" >
 		<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
-			<form action="index.php?c=controller&a=registraAsesor&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&carr=carr&crp=crp&; ?>" method="post">
+			<form action="index.php?c=controller&a=registraAsesor&token=token&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&carr=carr&crp=crp&; ?>" method="post">
 				<div class="row">
 					<div class="input-field col s10 m12 l12">
-						<input type="text" id="tok"name="tok">
-						<label for="tok">Token:</label>
+						<input type="text" id="token"name="token">
+						<label for="token">Token:</label>
 					</div>
 				</div>	
 				<div class="row">
