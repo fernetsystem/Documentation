@@ -13,13 +13,13 @@
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
               <li><a href="#">Mis Datos</a></li>
-              <li><a href="#">Grupos</a></li>
+              <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
               <li><a href="#">Mis Datos</a></li>
-              <li><a href="#">Grupos</a></li>
+              <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
             </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile">

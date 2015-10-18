@@ -1,4 +1,4 @@
-<h3>EMPRESAS</h3>
+<h3>EMPRESAS SUGERIDAS</h3>
 <table class="highlight responsive-table">
         <thead>
           <tr>
@@ -18,7 +18,7 @@
               echo "<td>".$data['telefono']."</td>";
               echo "<td>".$data['correo']."</td>";
               echo "<td><a href='index.php?c=controller&a=printNdoc&' class='waves-effect waves-light btn z-depth-1'>Dar de alta</a></td>";
-              echo "<td><a href='index.php?c=controller&a=printNdoc&' class='waves-effect waves-light btn z-depth-1'>Eliminar</a></td>";
+              echo "<td><a href='index.php?c=controller&a=printNdoc&' class='waves-effect waves-light btn z-depth-1 red'>Eliminar</a></td>";
      		    echo "</tr>";
         	} ?>
         </tbody>

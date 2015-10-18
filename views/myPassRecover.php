@@ -8,7 +8,7 @@
 				<label for="emai">Correo electronico:</label>
 			</div>
 			</div>
-			<button class="btn waves-effect waves-light" type="submit">Recuper</button>
+			<button class="btn waves-effect waves-light" type="submit">Recuperar</button>
 		</form>
     </div>
 </div>
