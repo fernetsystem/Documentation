@@ -93,6 +93,14 @@ class model{
         }
         return $this->myDataGet;   
     }
+    public function add_token_asesor($token,$matricula){
+        $consulta=$this->db->query("insert into asesores values(null,'$token',$matricula)");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {
