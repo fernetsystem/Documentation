@@ -105,6 +105,29 @@ class model{
         }
         return $this->myDataGet;   
     }
+    public function alta_enterprise_asesor($rfc){
+        $consulta=$this->db->query("update empresas set estado_emp=1 where RFC='$rfc'");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
+    public function delete_enterprise_suggest($rfc){
+        $consulta=$this->db->query("delete from empresas where RFC='$rfc'");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }   
+    }
+    public function count_enterprises_Suggest(){
+        $consulta=$this->db->query("select count(*) as n from empresas where estado_emp=0;");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;
+        }
+        return $this->myDataGet;      
+    }
     public function add_token_asesor($token,$matricula){
         $consulta=$this->db->query("insert into asesores values(null,'$token',$matricula)");
         if($consulta>0){

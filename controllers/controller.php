@@ -114,7 +114,7 @@ class controller{
 		require_once 'views/allDocumentsEstancias1.php';        
 		require_once 'views/footerAlumno.inc';
 	}
-		#Mandar a llamar el formulario de todos los documentos de estancia1
+	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias2(){
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/allDocumentsEstancias1.php';        
@@ -202,16 +202,43 @@ class controller{
 	}
 	public function listEnterprises(){ #View Asesor
 		$datos = $this->myModel->get_list_enterprises();
-		require_once 'views/headerAdm.inc';				
+		require_once 'views/headerAsesor.inc';				
 		require_once 'views/list_enterprises.php'; 
-		require_once 'views/footerAdm.inc';            		
+		require_once 'views/footerAsesor.inc';            		
 
 	}
-	public function listEnterprisesSuggest(){$datos = $this->myModel->get_list_enterprises_suggest();
-		require_once 'views/headerAdm.inc';				
+	public function listEnterprisesSuggest(){ #View Asesor
+		$datos = $this->myModel->get_list_enterprises_suggest();
+		require_once 'views/headerAsesor.inc';				
 		require_once 'views/list_enterprises_suggest.php'; 
-		require_once 'views/footerAdm.inc';            		
+		require_once 'views/footerAsesor.inc';            		
 
+	}
+	public function updateEstateEnterpriseAlta(){ #Cambiar el estado a 1 que es alta de empresa
+		$datos = $this->myModel->alta_enterprise_asesor($_REQUEST['rfc']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	public function deleteSuggesEnterprise(){
+		$datos = $this->myModel->delete_enterprise_suggest($_REQUEST['rfc']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}	
+	}
+	//_______________NO FUNCIONA
+	public function countEnterprisesSuggestToMenu(){
+		$datos = $this->myModel->count_enterprises_Suggest();
+		$n_empresa = $this->myModel->count_enterprises_Suggest();
+		foreach ($n_empresa as $num_emp) {
+			$num_empresas=$num_emp['n'];
+		}	
+		#require_once 'views/headerAdm.inc';
+		#echo "<h2>".$num_empresas."</h2>";
 	}
 	public function formTokensAdmin(){
 		require_once 'views/headerAdm.inc';				

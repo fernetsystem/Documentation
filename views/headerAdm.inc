@@ -13,15 +13,13 @@
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
               <li><a href="#">Panel de control</a></li>
-              <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
-              <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas</a></li>
+              <li><a href="index.php?c=controller&a=formTokensAdmin&; ?">Tokens asesores</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
         </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
               <li><a href="#">Panel de control</a></li>
-              <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
-              <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas</a></li>
+              <li><a href="index.php?c=controller&a=formTokensAdmin&; ?">Tokens asesores</a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
          </ul>
         <a class="button-collapse" href="#" data-activates="nav-mobile">
