@@ -12,7 +12,7 @@
         <a href="#" class="brand-logo">LOGO</a>
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
-              <li><a href="index.php?c=controller&a=formData&; ?">Mis Datos</a></li>
+              <li><a href="index.php?c=controller&a=formDataAsesor&; ?">Mis Datos</a></li>
               <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
               <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
               <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas<span class="new badge">4</span></a></li>
@@ -20,7 +20,7 @@
             </ul>
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
-              <li><a href="index.php?c=controller&a=formData&; ?">Mis Datos</a></li>
+              <li><a href="index.php?c=controller&a=formDataAsesor&; ?">Mis Datos</a></li>
               <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
               <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
               <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas<span class="new badge">4</span></a></li>

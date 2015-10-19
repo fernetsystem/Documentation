@@ -96,13 +96,21 @@ class controller{
         require_once 'views/loginUser.php';        
         require_once 'views/footer.inc';
 	}
-	#Mandar a llamar el formulario de los datos de las cuentas
-	public function formData(){
+	#Mandar a llamar el formulario de los datos del alumno
+	public function formDataAlumno(){
 		session_start();
 		$datos = $this->myModel->get_matricula($_SESSION['matr']);
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/dataOfMyAccount.php';        
 		require_once 'views/footerAlumno.inc';
+	}
+	#Mandar a llamar el formulario de los datos del asesor
+	public function formDataAsesor(){
+		session_start();
+		$datos = $this->myModel->get_matricula($_SESSION['matr']);
+		require_once 'views/headerAsesor.inc';		
+		require_once 'views/dataOfMyAccount.php';        
+		require_once 'views/footerAsesor.inc';
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias1(){
