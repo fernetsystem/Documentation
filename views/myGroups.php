@@ -45,3 +45,8 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+   	<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
+      	<a href="index.php?c=controller&a=formAddGroup&; ?" class="btn waves-effect waves-light">Crear grupo</a>
+    </div>
+</div>
