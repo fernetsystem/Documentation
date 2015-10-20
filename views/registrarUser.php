@@ -11,7 +11,7 @@
     <div id="test1" class="col s12">	
 	<div class="row" >
 		<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
-			<form action="index.php?c=controller&a=registraAlumno&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&crp=crp&carr=carr&; ?>" method="post">
+			<form action="index.php?c=controller&a=registraAlumno&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&crp=crp&carr=carr&sex=sex&; ?>" method="post">
 				<div class="row">
 					<div class="input-field col s10 m6 l6">
 						<input type="text" id="mat"name="mat">
@@ -69,7 +69,7 @@
 	<div id="test2" class="col s12">	
 	<div class="row" >
 		<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
-			<form action="index.php?c=controller&a=registraAsesor&token=token&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&carr=carr&crp=crp&; ?>" method="post">
+			<form action="index.php?c=controller&a=registraAsesor&token=token&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&carr=carr&crp=crp&sex=sex&; ?>" method="post">
 				<div class="row">
 					<div class="input-field col s10 m12 l12">
 						<input type="text" id="token"name="token">
@@ -110,8 +110,8 @@
 						<label for="crp">Curp:</label>
 					</div>	
 					<div class="col s10 m4 l4" >
-					    <input name="group1" type="radio" id="test1" />		<label for="test1">Hombre</label><br/>
-					    <input name="group1" type="radio" id="test1" />		<label for="test1">Mujer</label>
+					    <input name="sex" type="radio" id="r3" value="H"/>		<label for="r3">Hombre</label><br/>
+					    <input name="sex" type="radio" id="r4" value="M"/>		<label for="r4">Mujer</label>
 					</div>
 				</div>
 				<div class="row">	

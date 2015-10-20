@@ -62,7 +62,7 @@ class controller{
 		$exitsToken = $this->myModel->validate_token($_REQUEST['token'],$_REQUEST['mat']);
 		if ($exitsToken>0) {
 			echo "TOKEN VALIDO";
-			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
+			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
 			if($datos > 0){
 				echo "SUCCESS";
 			}else{

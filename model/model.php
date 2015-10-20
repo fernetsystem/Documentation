@@ -28,7 +28,7 @@ class model{
     }
     public function validate_token($token,$matricula){
         $contador=0;
-        $consulta=$this->db->query("select * from asesores where matricula=".$matricula." and token='".$token."';");
+        $consulta=$this->db->query("SELECT * FROM asesores WHERE matricula = $matricula and token ='$token'");
         while ($filas=$consulta->fetch_assoc()) {
             $contador++;
         }
@@ -38,8 +38,8 @@ class model{
             return 0;
         }
     }
-    public function get_registro_asesor($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr){
-        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','H','$email','$pass','ASESOR',$carr,'$crp')");
+    public function get_registro_asesor($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr,$sex){
+        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','$sex','$email','$pass','ASESOR',$carr,'$crp')");
         if($consulta>0){
             return 1;
         }else{
