@@ -61,7 +61,6 @@ class controller{
 	public function registraAsesor(){
 		$exitsToken = $this->myModel->validate_token($_REQUEST['token'],$_REQUEST['mat']);
 		if ($exitsToken>0) {
-			echo "TOKEN VALIDO";
 			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
 			if($datos > 0){
 				echo "SUCCESS";
@@ -289,13 +288,13 @@ class controller{
 	}
 	public function addGroupAsesor(){
 		session_start();
-		//________RESOLVER POR K TENGO ERROR AL INGRESAR NUEVO ASESOR 
-		/*$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
+		//________VALIDAR QUE NO SE DUPLIQUEN GRUPOS
+		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
 		foreach ($getAsesor as $asesor) {
-			$m=$asesor['matricula'];
+			$no_asesor=$asesor['no_asesor'];
 		}
-		echo $m;*/
-		$datos = $this->myModel->add_group_asesor($_REQUEST['group'],$_REQUEST['per'],$_SESSION['matr']);
+		
+		$datos = $this->myModel->add_group_asesor($_REQUEST['group'],$_REQUEST['per'],$no_asesor);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
