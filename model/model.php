@@ -143,6 +143,21 @@ class model{
         }
         return $this->myDataGet;
     }
+    public function get_no_asesor($matricula){
+        $consulta=$this->db->query("select * from asesores where matricula=$matricula");  
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;   
+    }
+    public function add_group_asesor($grupo,$periodo,$asesor){
+        $consulta=$this->db->query("insert into grupos values(null,'$grupo','$periodo',$asesor)");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {

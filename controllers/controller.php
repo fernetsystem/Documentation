@@ -280,6 +280,27 @@ class controller{
 		require_once 'views/insertProcessForAsesor.php'; 
 		require_once 'views/list_alumnos_asesor.php'; 
 		require_once 'views/footerAsesor.inc';	
+	}
+	#Mandar a llamar vista para ver grupos
+	public function formAddGroup(){
+		require_once 'views/headerAsesor.inc';				
+		require_once 'views/formAddGroup.php'; 
+		require_once 'views/footerAsesor.inc';	
+	}
+	public function addGroupAsesor(){
+		session_start();
+		//________RESOLVER POR K TENGO ERROR AL INGRESAR NUEVO ASESOR 
+		/*$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
+		foreach ($getAsesor as $asesor) {
+			$m=$asesor['matricula'];
+		}
+		echo $m;*/
+		$datos = $this->myModel->add_group_asesor($_REQUEST['group'],$_REQUEST['per'],$_SESSION['matr']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
 	}	
 	#Mandar a llamar el formulario para recuperar contra
 	public function formRecoverPass(){
