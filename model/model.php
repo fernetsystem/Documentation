@@ -18,8 +18,8 @@ class model{
         	return 0;
         }
 	}
-    public function get_registro_alumno($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr){
-        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','H','$email','$pass','ALUMNO',$carr,'$crp')");
+    public function get_registro_alumno($mat,$pass,$nom,$pat,$mate,$email,$crp,$carr,$sex){
+        $consulta=$this->db->query("insert into accounts values($mat,'$nom','$pat','$mate','$sex','$email','$pass','ALUMNO',$carr,'$crp')");
         if($consulta>0){
             return 1;
         }else{
@@ -46,8 +46,8 @@ class model{
             return 0;
         }
     }
-    public function edit_data($sesMat,$mat,$pass,$nom,$pat,$mate,$email,$crp){
-        $consulta=$this->db->query("update accounts set matricula=$mat, password='$pass' ,nombre='$nom', paterno='$pat', materno='$mate', email='$email',curp='$crp' where matricula=$sesMat");
+    public function edit_data($sesMat,$mat,$pass,$nom,$pat,$mate,$email,$crp,$sex){
+        $consulta=$this->db->query("update accounts set matricula=$mat, password='$pass' ,nombre='$nom', paterno='$pat', materno='$mate', email='$email',curp='$crp',sexo='$sex' where matricula=$sesMat");
         if($consulta>0){
             return 1;
         }else{

@@ -49,7 +49,7 @@ class controller{
 		}
 	}
 	public function registraAlumno(){
-		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr']);
+		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
@@ -77,7 +77,7 @@ class controller{
 	}
 	public function editData(){#probar editanto matricula
 		session_start();
-		$datos = $this->myModel->edit_data($_SESSION['matr'],$_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp']);
+		$datos = $this->myModel->edit_data($_SESSION['matr'],$_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['sex']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{

@@ -46,8 +46,8 @@
 						<label for="crp">Curp:</label>
 					</div>	
 					<div class="col s10 m4 l4" >
-					    <input name="group1" type="radio" id="test1" />		<label for="test1">Hombre</label><br/>
-					    <input name="group1" type="radio" id="test1" />		<label for="test1">Mujer</label>
+					    <input name="sex" type="radio" id="r1" value="H"/>		<label for="r1">Hombre</label><br/>
+					    <input name="sex" type="radio" id="r2" value="M"/>		<label for="r2">Mujer</label>
 					</div>
 				</div>
 				<div class="row">	

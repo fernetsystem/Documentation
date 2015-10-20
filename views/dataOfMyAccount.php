@@ -3,7 +3,7 @@
 <div class="row" >
 	<div class="col s12 m10 l6 offset-s1 offset-m1 offset-l3">
 		<h3>Mis Datos</h3>
-		<form action="index.php?c=controller&a=editData&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&crp=crp&carr=carr&; ?>" method="post">
+		<form action="index.php?c=controller&a=editData&mat=mat&pass=pass&nom=nom&pat=pat&mate=mate&email=email&crp=crp&carr=carr&sex=sex&; ?>" method="post">
 			<div class="row">
 				<div class="input-field col s10 m6 l6">
 					<input type="text" id="mat"name="mat" value=<?php echo $dato['matricula']; ?>>
@@ -37,10 +37,9 @@
 					<input type="text" id="crp"name="crp" value=<?php echo $dato['curp']; ?>>
 					<label for="crp">Curp:</label>
 				</div>	
-				<!--NO CAMBIA VALOR-->
 				<div class="col s10 m4 l4" >
-				    <input name="group1" type="radio" id="test1" />		<label for="test1">Hombre</label><br/>
-				    <input name="group1" type="radio" id="test1" />		<label for="test1">Mujer</label>
+					    <input name="sex" type="radio" id="r5" value="H"/>		<label for="r5">Hombre</label><br/>
+					    <input name="sex" type="radio" id="r6" value="M"/>		<label for="r6">Mujer</label>
 				</div>
 			</div>
 			<!--FALTA UPDATE EN CARRERA-->
