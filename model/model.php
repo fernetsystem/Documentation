@@ -26,7 +26,7 @@ class model{
             return 0;
         }
     }
-    public function validate_token($matricula,$token){
+    public function validate_token($token,$matricula){
         $contador=0;
         $consulta=$this->db->query("select * from asesores where matricula=".$matricula." and token='".$token."';");
         while ($filas=$consulta->fetch_assoc()) {
