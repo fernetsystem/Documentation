@@ -143,6 +143,27 @@ class model{
         }
         return $this->myDataGet;
     }
+    public function all_my_groups_E1($no_asesor){
+        $consulta=$this->db->query("select * from grupos where no_asesor=$no_asesor and grupo like'1104%'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;    
+    }
+    public function all_my_groups_E2($no_asesor){
+        $consulta=$this->db->query("select * from grupos where no_asesor=$no_asesor and grupo like'1107%'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;    
+    }
+    public function all_my_groups_Estad($no_asesor){
+        $consulta=$this->db->query("select * from grupos where no_asesor=$no_asesor and grupo like'1110%'");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;    
+    }
     public function get_no_asesor($matricula){
         $consulta=$this->db->query("select * from asesores where matricula=$matricula");  
         while ($filas=$consulta->fetch_assoc()) {
