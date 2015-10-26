@@ -297,12 +297,8 @@ class controller{
 	public function addGroupAsesor(){
 		session_start();
 		//________VALIDAR QUE NO SE DUPLIQUEN GRUPOS
-		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
-		foreach ($getAsesor as $asesor) {
-			$no_asesor=$asesor['no_asesor'];
-		}
 		
-		$datos = $this->myModel->add_group_asesor($_REQUEST['group'],$_REQUEST['per'],$no_asesor);
+		$datos = $this->myModel->add_group_asesor($_REQUEST['group'],$_REQUEST['per'],$_SESSION['numAsesor']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
