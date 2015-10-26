@@ -272,6 +272,14 @@ class controller{
 	public function listGroups(){
 		require_once 'views/headerAsesor.inc';				
 		require_once 'views/myGroups.php'; 
+	#Mandar obtener el numero de asesor
+	public function myNumAsesorSession(){
+		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
+		foreach ($getAsesor as $asesor) {
+			$nAse=$asesor['no_asesor'];
+		}
+		$_SESSION['numAsesor'] = $nAse;	
+	}
 		require_once 'views/footerAsesor.inc';	
 	}
 	public function groupSelect(){
