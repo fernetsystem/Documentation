@@ -13,7 +13,9 @@
         <ul class="right hide-on-med-and-down">
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAsesor&; ?">Mis Datos</a></li>
-              <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsE1&; ?">Estancias1</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsE2&; ?">Estancias2</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsEstad&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
               <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas<span class="new badge">4</span></a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
@@ -21,7 +23,9 @@
         <ul class="side-nav" id="nav-mobile">
               <li><a href="#">Inicio</a></li>
               <li><a href="index.php?c=controller&a=formDataAsesor&; ?">Mis Datos</a></li>
-              <li><a href="index.php?c=controller&a=listGroups&; ?">Grupos</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsE1&; ?">Estancias1</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsE2&; ?">Estancias2</a></li>
+              <li><a href="index.php?c=controller&a=myListGroupsEstad&; ?">Estadias</a></li>
               <li><a href="index.php?c=controller&a=listEnterprises&; ?">Empresas</a></li>
               <li><a href="index.php?c=controller&a=listEnterprisesSuggest&; ?">Empresas sugeridas<span class="new badge">4</span></a></li>
               <li><a href="index.php?c=controller&a=closeSession&; ?">Cerrar sesion</a></li>
