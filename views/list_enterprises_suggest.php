@@ -1,3 +1,6 @@
+<div class="row">
+<div class="col s12 m12 l12 ">
+
 <h3>EMPRESAS SUGERIDAS</h3>
 <table class="highlight responsive-table">
         <thead>
@@ -23,3 +26,5 @@
         	} ?>
         </tbody>
 </table>
+<div/>
+<div/>
