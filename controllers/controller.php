@@ -299,11 +299,11 @@ class controller{
 		require_once 'views/myGroupsEstad.php'; 
 		require_once 'views/footerAsesor.inc';	
 	}
-	public function showIdGroup(){
-		echo "ID del grupo: ".$_REQUEST['idgroup'];
-	}
 	public function groupSelect(){
-		require_once 'views/headerAsesor.inc';				
+		session_start(); //guardar el idgrupo seleccinado y la idmateria
+		$_SESSION['idgroup'] = $_REQUEST['idgroup'];
+		$_SESSION['idmater'] = $_REQUEST['idmat'];
+		require_once 'views/headerAsesor.inc';
 		require_once 'views/insertProcessForAsesor.php'; 
 		require_once 'views/list_alumnos_asesor.php'; 
 		require_once 'views/footerAsesor.inc';	
