@@ -34,6 +34,8 @@ class controller{
 						require_once 'views/footerAdm.inc';            		
             		break;
             	case 'ASESOR':
+            			$myController = new controller();
+						$myController->myNumAsesorSession();
 						require_once 'views/headerAsesor.inc';				
 						require_once 'views/homeAsesor.php'; 
 						require_once 'views/footerAsesor.inc';
@@ -268,10 +270,6 @@ class controller{
 		require_once 'views/list_tokens.php'; 
 		
 	}
-	#Mandar a llamar vista para ver grupos
-	public function listGroups(){
-		require_once 'views/headerAsesor.inc';				
-		require_once 'views/myGroups.php'; 
 	#Mandar obtener el numero de asesor
 	public function myNumAsesorSession(){
 		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
@@ -280,7 +278,29 @@ class controller{
 		}
 		$_SESSION['numAsesor'] = $nAse;	
 	}
+	public function myListGroupsE1(){
+		session_start();
+		$datos = $this->myModel->all_my_groups_E1($_SESSION['numAsesor']);
+		require_once 'views/headerAsesor.inc';			
+		require_once 'views/myGroupsE1.php'; 
+		require_once 'views/footerAsesor.inc';
+	}
+	public function myListGroupsE2(){
+		session_start();
+		$datos = $this->myModel->all_my_groups_E2($_SESSION['numAsesor']);
+		require_once 'views/headerAsesor.inc';			
+		require_once 'views/myGroupsE2.php'; 
 		require_once 'views/footerAsesor.inc';	
+	}
+	public function myListGroupsEstad(){
+		session_start();
+		$datos = $this->myModel->all_my_groups_Estad($_SESSION['numAsesor']);
+		require_once 'views/headerAsesor.inc';			
+		require_once 'views/myGroupsEstad.php'; 
+		require_once 'views/footerAsesor.inc';	
+	}
+	public function showIdGroup(){
+		echo "ID del grupo: ".$_REQUEST['idgroup'];
 	}
 	public function groupSelect(){
 		require_once 'views/headerAsesor.inc';				
