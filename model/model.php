@@ -191,6 +191,17 @@ class model{
             return 0;
         }
     }
+    public function get_list_alumnos_in_my_group($idmateria,$idgrupo){
+        $consulta=$this->db->query("SELECT p.matricula, nombre, paterno, materno, estado_pro,
+                                           total_horas, RFC, fecha_i, fecha_t, calificacion,
+                                           nom_proyecto, nom_encargado, puesto_encargado, tit_encargado
+                                           FROM procesos as p INNER JOIN accounts as c ON p.matricula = c.matricula 
+                                           where idmateria=$idmateria and idgrupo=$idgrupo");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {

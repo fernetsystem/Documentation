@@ -305,8 +305,14 @@ class controller{
 		$_SESSION['idmater'] = $_REQUEST['idmat'];
 		require_once 'views/headerAsesor.inc';
 		require_once 'views/insertProcessForAsesor.php'; 
-		require_once 'views/list_alumnos_asesor.php'; 
+		$myController = new controller();
+		$myController->listAlumnosInMyGroup();			
 		require_once 'views/footerAsesor.inc';	
+	}
+	public function listAlumnosInMyGroup(){
+		
+		$datos = $this->myModel->get_list_alumnos_in_my_group($_SESSION['idmater'],$_SESSION['idgroup']);
+		require_once 'views/list_alumnos_asesor.php'; 
 	}
 	public function addAlumnoToGroup(){ //agregar alumno al grupo
 		session_start();
