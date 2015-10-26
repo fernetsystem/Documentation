@@ -3,7 +3,7 @@
 			<ul class="collection with-header">
 		        <li class="collection-header"><h5>Grupo y periodo</h5></li>
 		     	<?php   foreach ($datos as $dataE2) {
-			        	echo '<li class="collection-item"><div>'.$dataE2['grupo'].' - '.$dataE2['periodo'].'<a href="index.php?c=controller&a=showIdGroup&idgroup='.$dataE2['idgrupo'].'&; ?" class="secondary-content"><i class="material-icons">ver</i></a></div></li>';
+			        	echo '<li class="collection-item"><div>'.$dataE2['grupo'].' - '.$dataE2['periodo'].'<a href="index.php?c=controller&a=groupSelect&idgroup='.$dataE2['idgrupo'].'&idmat=2&; ?" class="secondary-content"><i class="material-icons">ver</i></a></div></li>';
 			    } ?>
 	      	</ul>
 		</div>
