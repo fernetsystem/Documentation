@@ -308,6 +308,15 @@ class controller{
 		require_once 'views/list_alumnos_asesor.php'; 
 		require_once 'views/footerAsesor.inc';	
 	}
+	public function addAlumnoToGroup(){ //agregar alumno al grupo
+		session_start();
+		$datos = $this->myModel->add_alumno_to_group($_REQUEST['matr'],$_SESSION['idmater'],$_SESSION['idgroup']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
 	#Mandar a llamar vista para ver grupos
 	public function formAddGroup(){
 		require_once 'views/headerAsesor.inc';				

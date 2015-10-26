@@ -179,6 +179,18 @@ class model{
             return 0;
         }
     }
+    public function add_alumno_to_group($matricula,$idmateria,$idgrupo){
+        $consulta=$this->db->query("insert into procesos values(null,$matricula,$idmateria,
+                                                                $idgrupo,'ACTIVADA',360,
+                                                                NULL,NULL,NULL,
+                                                                0,NULL,NULL,NULL,
+                                                                NULL)");
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {
