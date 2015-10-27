@@ -191,6 +191,21 @@ class model{
             return 0;
         }
     }
+    public function updateDataProcess($rfc,$fecha_i,$fecha_t,$nom_proyecto,$nom_encargado,$puesto_encargado,$tit_encargado,$matricula,$idmateria){
+        $consulta=$this->db->query("update procesos set rfc='$rfc',
+                                                            fecha_i='$fecha_i',
+                                                            fecha_t='$fecha_t',
+                                                            nom_proyecto='$nom_proyecto',
+                                                            nom_encargado='$nom_encargado',
+                                                            puesto_encargado='$puesto_encargado',
+                                                            tit_encargado='$tit_encargado' 
+                                                            where matricula='$matricula' and  idmateria=$idmateria");        
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }   
+    }
     public function get_list_alumnos_in_my_group($idmateria,$idgrupo){
         $consulta=$this->db->query("SELECT p.matricula, nombre, paterno, materno, estado_pro,
                                            total_horas, RFC, fecha_i, fecha_t, calificacion,

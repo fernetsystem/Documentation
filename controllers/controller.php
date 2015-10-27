@@ -160,6 +160,16 @@ class controller{
         	require_once 'views/footerAlumno.inc';
 		}
 	}
+	public function updateProceesE1(){
+		session_start();
+		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],1);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+
+	}
 	public function fillDataEnterpriseEs2(){
 		session_start();
 		$validaMateria="";
@@ -306,15 +316,17 @@ class controller{
 		require_once 'views/headerAsesor.inc';
 		require_once 'views/insertProcessForAsesor.php'; 
 		$myController = new controller();
-		$myController->listAlumnosInMyGroup();			
+		$myController->listAlumnosInMyGroup();			//llamar al listado de alumno
 		require_once 'views/footerAsesor.inc';	
 	}
+	//tabla para listar alumno y seguimiento
 	public function listAlumnosInMyGroup(){
 		
 		$datos = $this->myModel->get_list_alumnos_in_my_group($_SESSION['idmater'],$_SESSION['idgroup']);
 		require_once 'views/list_alumnos_asesor.php'; 
 	}
-	public function addAlumnoToGroup(){ //agregar alumno al grupo
+	//agregar alumno al grupo
+	public function addAlumnoToGroup(){ 
 		session_start();
 		$datos = $this->myModel->add_alumno_to_group($_REQUEST['matr'],$_SESSION['idmater'],$_SESSION['idgroup']);
 		if($datos > 0){
