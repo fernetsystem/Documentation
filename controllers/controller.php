@@ -168,7 +168,24 @@ class controller{
 		}else{
 			echo "ERROR";
 		}
-
+	}
+	public function updateProceesE2(){
+		session_start();
+		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],2);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	public function updateProceesEstad(){
+		session_start();
+		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],3);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
 	}
 	public function fillDataEnterpriseEs2(){
 		session_start();

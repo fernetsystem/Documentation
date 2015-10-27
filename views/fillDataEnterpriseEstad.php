@@ -1,7 +1,7 @@
 <h3>Datos de la empresa</h3>
 <div class="row" >
 	
-		<form action="index.php?c=controller&a=updateProceesE2&rfc=rfc&fi=fi&ft=ft&pro=pro&nomc=nomc&pue=pue&tit=tit&; ?>" method="post">
+		<form action="index.php?c=controller&a=updateProceesEstad&rfc=rfc&fi=fi&ft=ft&pro=pro&nomc=nomc&pue=pue&tit=tit&; ?>" method="post">
 			<div class="row">
 				<div class="col s10 m6 l10 offset-s1 offset-m4 offset-l3">	
 				<div class="input-field col s10 m4 l4">
