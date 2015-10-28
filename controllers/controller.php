@@ -162,7 +162,7 @@ class controller{
 	}
 	public function updateProceesE1(){
 		session_start();
-		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],1);
+		$datos = $this->myModel->update_data_process($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],1);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
@@ -171,7 +171,7 @@ class controller{
 	}
 	public function updateProceesE2(){
 		session_start();
-		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],2);
+		$datos = $this->myModel->update_data_process($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],2);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
@@ -180,7 +180,13 @@ class controller{
 	}
 	public function updateProceesEstad(){
 		session_start();
-		$datos = $this->myModel->updateDataProcess($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],3);
+		$datos = $this->myModel->update_data_process($_REQUEST['rfc'],$_REQUEST['fi'],$_REQUEST['ft'],$_REQUEST['pro'],$_REQUEST['nomc'],$_REQUEST['pue'],$_REQUEST['tit'],$_SESSION['matr'],3);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
