@@ -152,7 +152,15 @@ class controller{
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
 			require_once 'views/headerAlumno.inc';		
-			require_once 'views/fillDataEnterpriseE1.php';        
+			$datos = $this->myModel->get_list_enterprises();
+			require_once 'views/fillDataEnterpriseE1.php';
+			require_once 'views/footerAlumno.inc';
+        }else{
+        	require_once 'views/headerAlumno.inc';
+        	echo "<h3>No esta habilitado este proceso</h3>";
+        	require_once 'views/footerAlumno.inc';
+		}
+	}
 			require_once 'views/footerAlumno.inc';
         }else{
         	require_once 'views/headerAlumno.inc';
