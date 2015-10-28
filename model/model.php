@@ -191,7 +191,7 @@ class model{
             return 0;
         }
     }
-    public function updateDataProcess($rfc,$fecha_i,$fecha_t,$nom_proyecto,$nom_encargado,$puesto_encargado,$tit_encargado,$matricula,$idmateria){
+    public function update_data_process($rfc,$fecha_i,$fecha_t,$nom_proyecto,$nom_encargado,$puesto_encargado,$tit_encargado,$matricula,$idmateria){
         $consulta=$this->db->query("update procesos set rfc='$rfc',
                                                             fecha_i='$fecha_i',
                                                             fecha_t='$fecha_t',
@@ -206,10 +206,19 @@ class model{
             return 0;
         }   
     }
+    #Método para calificar en asesor recibe por parametro calificacion, estado Reprobada o Aprobada
+    public function update_proc_calif($calificacion,$estadoMat,$matricula,$idmateria){
+        $consulta=$this->db->query("update procesos set calificacion=$calificacion, estado_pro='$estadoMat' where matricula='$matricula' and  idmateria=$idmateria");        
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }   
+    }
     public function get_list_alumnos_in_my_group($idmateria,$idgrupo){
         $consulta=$this->db->query("SELECT p.matricula, nombre, paterno, materno, estado_pro,
                                            total_horas, RFC, fecha_i, fecha_t, calificacion,
-                                           nom_proyecto, nom_encargado, puesto_encargado, tit_encargado
+                                           nom_proyecto, nom_encargado, puesto_encargado, tit_encargado, idmateria
                                            FROM procesos as p INNER JOIN accounts as c ON p.matricula = c.matricula 
                                            where idmateria=$idmateria and idgrupo=$idgrupo");
         while ($filas=$consulta->fetch_assoc()) {
