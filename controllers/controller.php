@@ -197,6 +197,14 @@ class controller{
 		require_once 'views/formCalif.php'; 
 		require_once 'views/footerAsesor.inc';  
 	}
+	public function updateProcE1Calfc(){
+		session_start();	//La session para obtener el id de la materia
+		if ($_REQUEST['calf']>=7) { 
+			$estadoMat = "APROBADA";
+		}else{
+			$estadoMat= "REPROBADA";
+		}
+		$datos = $this->myModel->update_proc_calif($_REQUEST['calf'],$estadoMat,$_REQUEST['mat'],$_SESSION['idmater']);
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
