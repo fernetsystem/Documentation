@@ -161,6 +161,34 @@ class controller{
         	require_once 'views/footerAlumno.inc';
 		}
 	}
+	
+	public function fillDataEnterpriseEs2(){
+		session_start();
+		$validaMateria="";
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],2);
+		foreach ($getData as $dato) {
+            	$validaMateria=$dato['estado_pro'];
+        }
+        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
+			require_once 'views/headerAlumno.inc';		
+			require_once 'views/fillDataEnterpriseE2.php';        
+			require_once 'views/footerAlumno.inc';
+        }else{
+        	require_once 'views/headerAlumno.inc';
+        	echo "<h3>No esta habilitado este proceso</h3>";
+        	require_once 'views/footerAlumno.inc';
+		}
+	}
+	public function fillDataEnterpriseEstadias(){
+		session_start();
+		$validaMateria="";
+		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],3);
+		foreach ($getData as $dato) {
+            	$validaMateria=$dato['estado_pro'];
+        }
+        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
+			require_once 'views/headerAlumno.inc';		
+			require_once 'views/fillDataEnterpriseEstad.php';    
 			require_once 'views/footerAlumno.inc';
         }else{
         	require_once 'views/headerAlumno.inc';
@@ -217,40 +245,6 @@ class controller{
 			echo "SUCCESS";
 		}else{
 			echo "ERROR";
-		}
-	}
-	public function fillDataEnterpriseEs2(){
-		session_start();
-		$validaMateria="";
-		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],2);
-		foreach ($getData as $dato) {
-            	$validaMateria=$dato['estado_pro'];
-        }
-        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
-			require_once 'views/headerAlumno.inc';		
-			require_once 'views/fillDataEnterpriseE2.php';        
-			require_once 'views/footerAlumno.inc';
-        }else{
-        	require_once 'views/headerAlumno.inc';
-        	echo "<h3>No esta habilitado este proceso</h3>";
-        	require_once 'views/footerAlumno.inc';
-		}
-	}
-	public function fillDataEnterpriseEstadias(){
-		session_start();
-		$validaMateria="";
-		$getData = $this->myModel->validate_materia_aprobada($_SESSION['matr'],3);
-		foreach ($getData as $dato) {
-            	$validaMateria=$dato['estado'];
-        }
-        if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
-			require_once 'views/headerAlumno.inc';		
-			echo "<h4>Contruyendo formulario</h4>";     
-			require_once 'views/footerAlumno.inc';
-        }else{
-        	require_once 'views/headerAlumno.inc';
-        	echo "<h3>No esta habilitado este proceso</h3>";
-        	require_once 'views/footerAlumno.inc';
 		}
 	}
 	#Mandar a llamar el formulario para sugerir empresa - Alumno
