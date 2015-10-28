@@ -187,6 +187,16 @@ class controller{
 			echo "ERROR";
 		}
 	}
+	public function formCalif(){
+		$matriculaDelAlumno = $_REQUEST['mat']; #variable oculta para reutilizarla
+		$nomb = $_REQUEST['nom'];
+		$pat = $_REQUEST['pater'];
+		$mat = $_REQUEST['mater'];
+		$nombreDelAlumno = $nomb." ".$pat." ".$mat;
+		require_once 'views/headerAsesor.inc';				
+		require_once 'views/formCalif.php'; 
+		require_once 'views/footerAsesor.inc';  
+	}
 		if($datos > 0){
 			echo "SUCCESS";
 		}else{
