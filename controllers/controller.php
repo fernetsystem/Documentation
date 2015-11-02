@@ -230,6 +230,15 @@ class controller{
 		require_once 'views/viewDataProcess.php'; 
 		require_once 'views/footerAsesor.inc';
 	}
+	public function generateDocuments(){
+		session_start();
+		$datos = $this->myModel->generate_documents($_SESSION['idmater'],$_REQUEST['proc']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
 	public function formCalif(){
 		$matriculaDelAlumno = $_REQUEST['mat']; #variable oculta para reutilizarla
 		$nomb = $_REQUEST['nom'];

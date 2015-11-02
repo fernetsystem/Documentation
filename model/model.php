@@ -233,6 +233,14 @@ class model{
         }
         return $this->myDataGet;
     }
+    public function generate_documents($idmateria,$idproceso){
+        $consulta=$this->db->query("call generate_documents($idmateria,$idproceso)");        
+        if($consulta>0){
+            return 1;
+        }else{
+            return 0;
+        }   
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {
