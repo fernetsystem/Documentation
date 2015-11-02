@@ -115,19 +115,19 @@ class controller{
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias1(){
-		session_start();
-		$materia="Estancias1";
-		$datos = $this->myModel->fill_documents($_SESSION['matr'],$materia);
-		
-		require_once 'views/headerAlumno.inc';		
-		require_once 'views/allDocumentsEstancias1.php';        
-		require_once 'views/footerAlumno.inc';
+		$datos = $this->myModel->fill_documents($_SESSION['matr'],1);
+		require_once 'views/allDocuments.php';        
+
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias2(){
-		require_once 'views/headerAlumno.inc';		
-		require_once 'views/allDocumentsEstancias1.php';        
-		require_once 'views/footerAlumno.inc';
+		$datos = $this->myModel->fill_documents($_SESSION['matr'],2);
+		require_once 'views/allDocuments.php';        
+	}
+	#Mandar a llamar el formulario de todos los documentos de estadias
+	public function formDocumentsEstad(){
+		$datos = $this->myModel->fill_documents($_SESSION['matr'],3);
+		require_once 'views/allDocuments.php';        
 	}
 	public function viewDocumentComprimiso(){
 		require_once 'views/documentCartaCompromiso.php';
