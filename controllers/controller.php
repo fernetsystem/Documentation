@@ -223,6 +223,13 @@ class controller{
 			echo "ERROR";
 		}
 	}
+	public function viewDataProcess(){
+		session_start();
+		$datos = $this->myModel->get_all_data_alumno_process($_SESSION['idmater'],$_REQUEST['mat']);
+		require_once 'views/headerAsesor.inc';		
+		require_once 'views/viewDataProcess.php'; 
+		require_once 'views/footerAsesor.inc';
+	}
 	public function formCalif(){
 		$matriculaDelAlumno = $_REQUEST['mat']; #variable oculta para reutilizarla
 		$nomb = $_REQUEST['nom'];

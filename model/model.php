@@ -226,6 +226,13 @@ class model{
         }
         return $this->myDataGet;
     }
+    public function get_all_data_alumno_process($idmateria,$matricula){
+        $consulta=$this->db->query("SELECT * FROM procesos where idmateria=$idmateria and matricula=$matricula");
+        while ($filas=$consulta->fetch_assoc()) {
+            $this->myDataGet[]=$filas;       
+        }
+        return $this->myDataGet;
+    }
     public function recover_pass($email){
         $consulta=$this->db->query("select * from accounts where email='$email'");
         while ($filas=$consulta->fetch_assoc()) {
