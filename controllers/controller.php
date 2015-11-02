@@ -155,10 +155,16 @@ class controller{
 			$datos = $this->myModel->get_list_enterprises();
 			require_once 'views/fillDataEnterpriseE1.php';
 			require_once 'views/footerAlumno.inc';
-        }else{
+        }else if($validaMateria=="VALIDADO"){
         	require_once 'views/headerAlumno.inc';
+        	$myController = new controller();
+			$myController->formDocumentsEstancias1();				
+        	require_once 'views/footerAlumno.inc';
+		}else{
+			require_once 'views/headerAlumno.inc';
         	echo "<h3>No esta habilitado este proceso</h3>";
         	require_once 'views/footerAlumno.inc';
+
 		}
 	}
 	
@@ -173,10 +179,16 @@ class controller{
 			require_once 'views/headerAlumno.inc';		
 			require_once 'views/fillDataEnterpriseE2.php';        
 			require_once 'views/footerAlumno.inc';
-        }else{
+        }else if($validaMateria=="VALIDADO"){
         	require_once 'views/headerAlumno.inc';
+        	$myController = new controller();
+			$myController->formDocumentsEstancias2();	
+        	require_once 'views/footerAlumno.inc';
+		}else{
+			require_once 'views/headerAlumno.inc';
         	echo "<h3>No esta habilitado este proceso</h3>";
         	require_once 'views/footerAlumno.inc';
+
 		}
 	}
 	public function fillDataEnterpriseEstadias(){
@@ -190,10 +202,16 @@ class controller{
 			require_once 'views/headerAlumno.inc';		
 			require_once 'views/fillDataEnterpriseEstad.php';    
 			require_once 'views/footerAlumno.inc';
-        }else{
+        }else if($validaMateria=="VALIDADO"){
         	require_once 'views/headerAlumno.inc';
+        	$myController = new controller();
+			$myController->formDocumentsEstad();	
+        	require_once 'views/footerAlumno.inc';
+		}else{
+			require_once 'views/headerAlumno.inc';
         	echo "<h3>No esta habilitado este proceso</h3>";
         	require_once 'views/footerAlumno.inc';
+
 		}
 	}
 	public function updateProceesE1(){
