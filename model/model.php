@@ -70,7 +70,7 @@ class model{
         return $this->myDataGet;   
     }
     public function search_document($no_documento){
-        $consulta=$this->db->query("select * from procesos_documentos where no_documento=$no_documento");
+        $consulta=$this->db->query("select * from procesos_documentos where iddocumento=$no_documento");
         while ($filas=$consulta->fetch_assoc()) {
             $this->myDataGet[]=$filas;       
         }
@@ -248,6 +248,7 @@ class model{
         }
         return $this->myDataGet;
     }
+
 }
 	
 ?>
