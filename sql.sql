@@ -80,6 +80,7 @@ BEGIN
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias1',null,'205BK20100/03(F05)','Reporte quincenal R6','Desactivado');
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias1',null,'205BK20100/03(F01)','Proyecto de cooperación','Desactivado');
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias1',null,'205BK20100/03(F06)','Carta de terminación','Desactivado');
+	
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias2',null,'205BK20100/03(F03)','Carta comprimiso','Desactivado');
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias2',null,'205BK20100/03(F02)','Carta de presentación','Desactivado');
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estancias2',null,'205BK20100/03(F04)','Carta de aceptación','Desactivado');
@@ -103,4 +104,44 @@ BEGIN
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estadias',null,'205BK20000/03(F01)','Proyecto de cooperación','Desactivado');
 	INSERT INTO procesos_documentos VALUES(New.matricula,'Estadias',null,'205BK20000/03(F06)','Carta de terminación','Desactivado');
 END; //
+delimiter ;
+
+delimiter $$
+CREATE procedure generate_documents(IN  materia int, IN idprocesoEnt int)     /* Parámetro de entrada */
+  begin
+    case materia
+     when 1 then INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F01)','Proyecto de cooperación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F02)','Carta de presentación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F03)','Carta comprimiso','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F04)','Carta de aceptación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R1','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R2','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R3','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R4','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F06)','Carta de terminación','GENERADO');
+     			 UPDATE procesos SET estado_pro='VALIDADO' WHERE idproceso=idprocesoEnt;
+     			 
+     when 2 then INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F01)','Proyecto de cooperación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F02)','Carta de presentación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F03)','Carta comprimiso','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F04)','Carta de aceptación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R1','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R2','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R3','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F05)','Reporte quincenal R4','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20100/03(F06)','Carta de terminación','GENERADO');
+     			 UPDATE procesos SET estado_pro='VALIDADO' WHERE idproceso=idprocesoEnt;
+
+     when 3 then INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F01)','Proyecto de cooperación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F02)','Carta de presentación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F03)','Carta comprimiso','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F04)','Carta de aceptación','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F05)','Reporte quincenal R1','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F05)','Reporte quincenal R2','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F05)','Reporte quincenal R3','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F05)','Reporte quincenal R4','GENERADO');
+     			 INSERT INTO procesos_documentos VALUES(null,idprocesoEnt,'205BK20000/03(F06)','Carta de terminación','GENERADO'); 
+     			 UPDATE procesos SET estado_pro='VALIDADO' WHERE idproceso=idprocesoEnt;
+    end case;
+  end$$
 delimiter ;
