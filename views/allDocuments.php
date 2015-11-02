@@ -1,34 +1,20 @@
-<h3>Mis Documentos</h3>
+<div class="container">
+<h3>Mis documentos</h3>
 <table class="highlight responsive-table">
         <thead>
           <tr>
               <th data-field="Documento">DOCUMENTO</th>
-              <th data-field="Formato">FORMATO</th>
               <th data-field="Estado">ESTADO</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <td>Carta compromiso</td>
-            <td>205BK20000/02 (F3)</td>
-            <td>Sin llenar</td>
-          </tr>
-          <tr>
-            <td>Carta de Presentación</td>
-            <td>205BK20000/02 (F2)</td>
-            <td>Sin llenar</td>
-          </tr>
-          <tr>
-            <td>Carta de Aceptación</td>
-            <td>205BK20000/02 (F4) </td>
-            <td>Sin llenar</td>
-          </tr>
-		  <tr>
-            <td>Proyecto de Cooperación</td>
-            <td>205BK20000/02(F01)</td>
-            <td>Sin llenar</td>
-          </tr>
-          
+        	<?php foreach ($datos as $data) {
+        		echo "<tr>";
+	        		echo "<td>".$data['documento']."</td>";
+	        		echo "<td>".$data['estado_doc']."</td>";
+	        		echo "<td><a href='index.php?c=controller&a=printNdoc&no_documento=".$data['iddocumento']."' class='waves-effect waves-light btn z-depth-1'>Ver</a></td>";
+        		echo "<tr>";
+        	} ?>
         </tbody>
 </table>
+</div>
