@@ -28,3 +28,19 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<p>Ventana modal</p>
+	<a href="#modal1" class="btn modal-trigger">Modal</a>
+	<div class="modal" id="modal1">
+	<div class="modal-content">
+		<h4>Soy una ventana modal</h4>
+		<p>Mira me como aparesco, esta ventana sera para el succes del ususario, o del erorr</p>
+	</div>
+	<div class="modal-footer">
+		<div class="action-bar">
+			<a href="#" class="btn-flat modal-action modal-close red">Cerrar</a>
+		</div>
+	</div>
+
+	</div>
+</div>

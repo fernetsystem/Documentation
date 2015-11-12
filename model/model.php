@@ -63,7 +63,11 @@ class model{
         return $this->myDataGet;
     }
     public function fill_documents($matricula,$materia){
-        $consulta=$this->db->query("select p.idproceso,iddocumento,documento,estado_doc from procesos AS p JOIN procesos_documentos AS d on p.idproceso = d.idproceso where p.matricula=$matricula and idmateria=$materia");
+        $consulta=$this->db->query("select p.idproceso,iddocumento,documento,estado_doc 
+                                    from procesos AS p JOIN procesos_documentos AS d 
+                                    on p.idproceso = d.idproceso 
+                                    where p.matricula=$matricula and idmateria=$materia");
+        
         while ($filas=$consulta->fetch_assoc()) {
             $this->myDataGet[]=$filas;
         }
