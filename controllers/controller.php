@@ -141,7 +141,9 @@ class controller{
 	#Obtener id del documento
 	public function printNdoc(){
 		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
-		echo $_REQUEST['no_documento'];
+		
+		$numeroDeDocumento_PRB=$_REQUEST['no_documento'];
+		require_once 'fpdf/aceptacion.php';
 	}
 	public function fillDataEnterpriseEs1(){
 		session_start();
