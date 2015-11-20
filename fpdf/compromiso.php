@@ -5,19 +5,19 @@ class PDF extends FPDF
 // Cabecera de página
 function Header()
 {
-    $this->AddFont('Times-Roman','','times.php');
-    $this->SetFont('Times-Roman');
-    $this->SetFontSize(12);
-    $this->SetLeftMargin(30);
-    $this->SetRightMargin(30);
-    $this->Image('gobierno.jpg',30,20,40);
-    $this->Image('upvm.jpg',230,20,30);
-    $this->Ln(30);
-    $this->Cell(0,5,utf8_decode('División de Ingeniería en Informática'),0,0,'R');
-    $this->Ln();
-    $this->SetFillColor(200,200,200);
-    $this->Cell(0,5,utf8_decode('INFORME QUINCENAL DEL DESARROLLO DEL PROYECTO'),0,0,'C',true);
+    $ciclo='PRIMER';
+    $numero='CUARTO';
+    $this->AddFont('GillSansMT-Bold','','gillB.php');
+    $this->SetFont('GillSansMT-Bold','',15);
+    $this->SetTextColor(128);
+    $this->Cell(20,10,'ESTANCIA I',0,0,'L');
     $this->Ln(10);
+    $this->Cell(20,10,''.$numero.' CUATRIMESTRE',0,0,'L');
+    $this->Ln(10);
+    $this->Cell(20,10,''.$ciclo.utf8_decode(' CICLO DE FORMACIÓN'),0,0,'L');
+    $this->Ln(10);
+    $this->Cell(20,10,'CARTA COMPROMISO',0,0,'L');
+    $this->Ln(20);
 }
 
 // Pie de página
@@ -25,6 +25,7 @@ function Footer()
 {
     // Posición: a 1,5 cm del final
     $this->SetY(-15);
+    $this->AddFont('GillSansMT','','gill.php');
     // Arial italic 8
     $this->SetFont('GillSansMT');
     // Número de página
@@ -33,7 +34,7 @@ function Footer()
 }
 #$matricula=$_POST['matricula'];
 // Creación del objeto de la clase heredada
-$pdf = new PDF('L');
+$pdf = new PDF();
 $pdf->SetCreator('Carta Compromiso',true);
 $pdf->AddFont('GillSansMT','','gill.php');
 $pdf->AliasNbPages();

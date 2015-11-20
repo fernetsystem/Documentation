@@ -11,7 +11,7 @@ function Header()
     $this->SetFontSize(10);
     $this->SetLeftMargin(20);
     $this->SetRightMargin(20);
-    $this->Cell(0,0,utf8_decode(', Estado de México a 00 de xxx de 201x'),0,0,'R');
+    $this->Cell(0,0,utf8_decode('(MunicipIo), Estado de México a 00 de xxx de 201x'),0,0,'R');
     $this->Ln(20);
     $this->SetFont('Arial','B',11);
     $this->Cell(20,10,utf8_decode('DR. JULIO CESAR RUÍZ MARTÍNEZ'),0,0,'L');
@@ -35,7 +35,7 @@ function Footer()
     $this->Cell(0,10,'205BK20100/03(F04)',0,0,'R');
 }
 }
-
+#$matricula=$_POST['matricula'];
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->SetCreator('Carta Compromiso',true);
@@ -57,7 +57,7 @@ $pdf->Cell(0,0,'ATENTAMENTE',0,0,'C');
 $pdf->Ln(30);
 $pdf->Cell(0,0,'«nombre del responsable de la estancia»',0,0,'C');
 $pdf->Ln(10);
-$pdf->Cell(0,0,$numeroDeDocumento_PRB,0,0,'C');
+$pdf->Cell(0,0,'«puesto»',0,0,'C');
 $pdf->Ln(10);
 $pdf->Output('CartaAceptacionEstancia.pdf','I');
     ?>

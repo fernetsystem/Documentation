@@ -1,12 +1,12 @@
 <?php
-     require('php/fpdf.php');
+     require('libs/fpdf.php');
 class PDF extends FPDF    
 {
 // Cabecera de página
 function Header()
 {
-    $this->AddFont('Cabin-Bold','','Cabin-Bold.php');
-    $this->SetFont('Cabin-Bold','');
+    $this->AddFont('Times-Roman','','times.php');
+    $this->SetFont('Times-Roman');
     $this->SetTextColor(102,102,102);
     $this->SetFontSize(10);
     $this->SetLeftMargin(30);
@@ -36,10 +36,9 @@ function Footer()
     $this->Cell(0,10,'205BK20100/03(F04)',0,0,'R');
 }
 }
-$matricula=$_POST['matricula'];
+#$matricula=$_POST['matricula'];
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
-$pdf->SetCreator('Carta Compromiso',true);
 $pdf->AliasNbPages();
 $pdf->AddPage();
 $pdf->AddFont('Cabin-Regular','','Cabin-Regular.php');

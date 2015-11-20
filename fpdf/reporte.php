@@ -1,5 +1,5 @@
 <?php
-     require('php/fpdf.php');
+     require('libs/fpdf.php');
 class PDF extends FPDF    
 {
 // Cabecera de página
@@ -10,8 +10,8 @@ function Header()
     $this->SetFontSize(12);
     $this->SetLeftMargin(30);
     $this->SetRightMargin(30);
-    $this->Image('gobierno.jpg',30,20,40);
-    $this->Image('upvm.jpg',150,20,30);
+    #$this->Image('gobierno.jpg',30,20,40);
+    #$this->Image('upvm.jpg',150,20,30);
     $this->Ln(30);
     $this->SetFillColor(200,200,200);
     $this->Cell(0,5,utf8_decode('INFORME QUINCENAL DEL DESARROLLO DEL PROYECTO'),0,0,'C',true);
@@ -29,7 +29,7 @@ function Footer()
     $this->Cell(0,10,'205BK20100/03(F05)',0,0,'R');
 }
 }
-$matricula=$_POST['matricula'];
+#$matricula=$_POST['matricula'];
 // Creación del objeto de la clase heredada
 $pdf = new PDF();
 $pdf->SetCreator('Carta Compromiso',true);
