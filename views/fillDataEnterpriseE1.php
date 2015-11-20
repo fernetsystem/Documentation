@@ -55,5 +55,5 @@
 		</form>
 		
 	</div>
-	<a href='index.php?c=controller&a=formDocumentsEstancias1& ?'; class='waves-effect waves-light btn col s10 m3 l2 offset-s2 offset-m5 offset-l5'>Ver documentos</a>
+
 </div>

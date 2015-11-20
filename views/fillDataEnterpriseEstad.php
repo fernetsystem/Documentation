@@ -14,16 +14,19 @@
 			</div>
 			<div class="row">
 				<div class="col s12 m8 l6 offset-s1 offset-m1 offset-l1">
-
-			<div class="row">
-				<div class="input-field col s10 m8 l8 offset-s1 offset-m4 offset-l6">
-					<input type="text" id="rfc"name="rfc">
-					<label for="rfc">RFC:</label>
-				</div>
-				<div class="col s6 m4 l4 offset-s6 offset-m10 offset-l12">
-					<a href="index.php?c=controller&a=suggestEnterprise&; ?>">Sugerir empresa</a>
-				</div>
-			</div>
+					<div class="row">
+						<select name="rfc"class="col s10 m8 l8 offset-s1 offset-m4 offset-l6">
+							<option value="" disabled selected>Selecciona el RFC</option>
+								<?php  
+					                foreach ($datos as $data) {
+									   	echo '<option value="'.$data['RFC'].'">'.$data['RFC'].'</option>	';
+									}
+									echo '</select>';
+							    ?>
+					<div class="col s6 m4 l4 offset-s6 offset-m10 offset-l12">
+						<a href="index.php?c=controller&a=suggestEnterprise&; ?>">Sugerir empresa</a>
+					</div>
+					</div>
 			<div class="row">
 				<div class="input-field col s10 m8 l8 offset-s1 offset-m4 offset-l6">
 					<input type="text" id="pro"name="pro">
@@ -52,5 +55,4 @@
 		</form>
 		
 	</div>
-	<a href='index.php?c=controller&a=formDocumentsEstancias1& ?'; class='waves-effect waves-light btn col s10 m3 l2 offset-s2 offset-m5 offset-l5'>Ver documentos</a>
 </div>

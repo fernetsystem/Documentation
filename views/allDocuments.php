@@ -12,7 +12,7 @@
         		echo "<tr>";
 	        		echo "<td>".$data['documento']."</td>";
 	        		echo "<td>".$data['estado_doc']."</td>";
-	        		echo "<td><a href='index.php?c=controller&a=printNdoc&no_documento=".$data['iddocumento']."' class='waves-effect waves-light btn z-depth-1'>Ver</a></td>";
+	        		echo "<td><a href='index.php?c=controller&a=printNdoc&doc=".$data['documento']."&no_documento=".$data['iddocumento']."' class='waves-effect waves-light btn z-depth-1'>Ver</a></td>";
         		echo "<tr>";
         	} ?>
         </tbody>

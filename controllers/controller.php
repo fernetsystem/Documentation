@@ -11,7 +11,9 @@ class controller{
         require_once 'views/loginUser.php';        
         require_once 'views/footer.inc';
 	}
-
+						#############################################
+						#################GENERAL######################
+						#############################################
 	public function valida(){
 		$tipo_de_usuario="";
 		$datos = $this->myModel->get_login($_REQUEST['mat'],$_REQUEST['pass']);
@@ -47,34 +49,8 @@ class controller{
             		break;
             }
 		}else{
-			echo "ERROR";
-		}
-	}
-	public function registraAlumno(){
-		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
-		if($datos > 0){
-			echo "SUCCESS";
-		}else{
-			echo "ERROR";
-		}
-		$myController = new controller();
-		$myController->formAddLogin();
-	}
-	public function registraAsesor(){
-		$exitsToken = $this->myModel->validate_token($_REQUEST['token'],$_REQUEST['mat']);
-		if ($exitsToken>0) {
-			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
-			if($datos > 0){
-				echo "SUCCESS";
-			}else{
-				echo "ERROR";
-			}
-			$myController = new controller();
-			$myController->formAddLogin();				
-		}else{
-			echo "TOKEN NO EXISTE";
-		}
-
+            echo "ERROR";
+        }
 	}
 	public function editData(){#probar editanto matricula
 		session_start();
@@ -97,6 +73,57 @@ class controller{
         require_once 'views/loginUser.php';        
         require_once 'views/footer.inc';
 	}
+	#Mandar obtener el numero de asesor
+	public function myNumAsesorSession(){
+		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
+		foreach ($getAsesor as $asesor) {
+			$nAse=$asesor['no_asesor'];
+		}
+		$_SESSION['numAsesor'] = $nAse;	
+	}
+	#Mandar a llamar el formulario para recuperar contra
+	public function formRecoverPass(){
+   		require_once 'views/header.inc';	
+        require_once 'views/myPassRecover.php';        
+        require_once 'views/footer.inc';
+	}
+	public function recoverPass(){
+		$subject = "Sistema estancias y estadias RECOVER PASS";
+		$p="";
+		$destino = $_REQUEST['emai'];
+		$datos = $this->myModel->recover_pass($_REQUEST['emai']);
+		foreach ($datos as $dato) {
+			$p=$dato['password'];
+		}
+		$myMsn = "Excelente dia!! Tu contraseña es: ".$p;
+		try {
+			mail($destino,$subject, $myMsn);
+		} catch (Exception $e) {
+			echo "Error:".$e;
+		}
+		$myController = new controller();
+		$myController->Index();	
+	}
+	#Método para destruir variables de sesion;
+	public function closeSession(){
+		session_start();
+		session_destroy();
+		$myController = new controller();
+		$myController->Index();	
+	}
+							#############################################
+							#################ALUMNO######################
+							#############################################
+	public function registraAlumno(){
+		$datos = $this->myModel->get_registro_alumno($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+		$myController = new controller();
+		$myController->formAddLogin();
+	}
 	#Mandar a llamar el formulario de los datos del alumno
 	public function formDataAlumno(){
 		session_start();
@@ -104,14 +131,6 @@ class controller{
 		require_once 'views/headerAlumno.inc';		
 		require_once 'views/dataOfMyAccount.php';        
 		require_once 'views/footerAlumno.inc';
-	}
-	#Mandar a llamar el formulario de los datos del asesor
-	public function formDataAsesor(){
-		session_start();
-		$datos = $this->myModel->get_matricula($_SESSION['matr']);
-		require_once 'views/headerAsesor.inc';		
-		require_once 'views/dataOfMyAccount.php';        
-		require_once 'views/footerAsesor.inc';
 	}
 	#Mandar a llamar el formulario de todos los documentos de estancia1
 	public function formDocumentsEstancias1(){
@@ -129,22 +148,7 @@ class controller{
 		$datos = $this->myModel->fill_documents($_SESSION['matr'],3);
 		require_once 'views/allDocuments.php';        
 	}
-	public function viewDocumentComprimiso(){
-		require_once 'views/documentCartaCompromiso.php';
-	}	
-	public function viewDocumentPresentacion(){
-		require_once 'views/documentCartaDePresentacion.php';
-	}
-	public function viewDocumentInformeQuin(){
-		require_once 'views/documentCartaInformeQuincenal.php';
-	}
-	#Obtener id del documento
-	public function printNdoc(){
-		$datos = $this->myModel->search_document($_REQUEST['no_documento']);
-		
-		$numeroDeDocumento_PRB=$_REQUEST['no_documento'];
-		require_once 'fpdf/aceptacion.php';
-	}
+	
 	public function fillDataEnterpriseEs1(){
 		session_start();
 		$validaMateria="";
@@ -179,6 +183,7 @@ class controller{
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
 			require_once 'views/headerAlumno.inc';		
+			$datos = $this->myModel->get_list_enterprises();
 			require_once 'views/fillDataEnterpriseE2.php';        
 			require_once 'views/footerAlumno.inc';
         }else if($validaMateria=="VALIDADO"){
@@ -202,6 +207,7 @@ class controller{
         }
         if ($validaMateria=="ACTIVADA") { #cambiar el estado [ASESOR]
 			require_once 'views/headerAlumno.inc';		
+			$datos = $this->myModel->get_list_enterprises();
 			require_once 'views/fillDataEnterpriseEstad.php';    
 			require_once 'views/footerAlumno.inc';
         }else if($validaMateria=="VALIDADO"){
@@ -243,46 +249,6 @@ class controller{
 			echo "ERROR";
 		}
 	}
-	public function viewDataProcess(){
-		session_start();
-		$datos = $this->myModel->get_all_data_alumno_process($_SESSION['idmater'],$_REQUEST['mat']);
-		require_once 'views/headerAsesor.inc';		
-		require_once 'views/viewDataProcess.php'; 
-		require_once 'views/footerAsesor.inc';
-	}
-	public function generateDocuments(){
-		session_start();
-		$datos = $this->myModel->generate_documents($_SESSION['idmater'],$_REQUEST['proc']);
-		if($datos > 0){
-			echo "SUCCESS";
-		}else{
-			echo "ERROR";
-		}
-	}
-	public function formCalif(){
-		$matriculaDelAlumno = $_REQUEST['mat']; #variable oculta para reutilizarla
-		$nomb = $_REQUEST['nom'];
-		$pat = $_REQUEST['pater'];
-		$mat = $_REQUEST['mater'];
-		$nombreDelAlumno = $nomb." ".$pat." ".$mat;
-		require_once 'views/headerAsesor.inc';				
-		require_once 'views/formCalif.php'; 
-		require_once 'views/footerAsesor.inc';  
-	}
-	public function updateProcE1Calfc(){
-		session_start();	//La session para obtener el id de la materia
-		if ($_REQUEST['calf']>=7) { 
-			$estadoMat = "APROBADA";
-		}else{
-			$estadoMat= "REPROBADA";
-		}
-		$datos = $this->myModel->update_proc_calif($_REQUEST['calf'],$estadoMat,$_REQUEST['mat'],$_SESSION['idmater']);
-		if($datos > 0){
-			echo "SUCCESS";
-		}else{
-			echo "ERROR";
-		}
-	}
 	#Mandar a llamar el formulario para sugerir empresa - Alumno
 	public function suggestEnterprise(){
 		require_once 'views/headerAlumno.inc';		
@@ -297,6 +263,57 @@ class controller{
 		}else{
 			echo "ERROR";
 		}
+	}
+	#Obtener id del documento
+	public function printNdoc(){
+				$datos = $this->myModel->search_document($_REQUEST['no_documento']);
+		$documentToView=$_REQUEST['doc'];
+		switch ($documentToView) {
+			case 'Proyecto de cooperación':
+					require_once 'fpdf/proyecto.php';
+				break;
+			case 'Carta de presentación':
+					echo "---------";
+				break;
+			case 'Carta comprimiso':
+					require_once 'fpdf/compromiso.php';
+				break;
+			case 'Carta de aceptación':
+					$numeroDeDocumento_PRB=$_REQUEST['no_documento'];
+					require_once 'fpdf/aceptacion.php';
+				break;
+			case 'Reporte quincenal R1':
+					require_once 'fpdf/reporte.php';
+				break;
+			case 'Carta de terminación':
+					require_once 'fpdf/termino.php';
+				break;
+			default:
+				# code...
+				break;
+		}
+
+
+	}
+	
+					#############################################
+					#################ASESOR######################
+					#############################################
+	public function registraAsesor(){
+		$exitsToken = $this->myModel->validate_token($_REQUEST['token'],$_REQUEST['mat']);
+		if ($exitsToken>0) {
+			$datos = $this->myModel->get_registro_asesor($_REQUEST['mat'],$_REQUEST['pass'],$_REQUEST['nom'],$_REQUEST['pat'],$_REQUEST['mate'],$_REQUEST['email'],$_REQUEST['crp'],$_REQUEST['carr'],$_REQUEST['sex']);
+			if($datos > 0){
+				echo "SUCCESS";
+			}else{
+				echo "ERROR";
+			}
+			$myController = new controller();
+			$myController->formAddLogin();				
+		}else{
+			echo "TOKEN NO EXISTE";
+		}
+
 	}
 	public function listEnterprises(){ #View Asesor
 		$datos = $this->myModel->get_list_enterprises();
@@ -327,45 +344,6 @@ class controller{
 		}else{
 			echo "ERROR";
 		}	
-	}
-	//_______________NO FUNCIONA
-	public function countEnterprisesSuggestToMenu(){
-		$datos = $this->myModel->count_enterprises_Suggest();
-		$n_empresa = $this->myModel->count_enterprises_Suggest();
-		foreach ($n_empresa as $num_emp) {
-			$num_empresas=$num_emp['n'];
-		}	
-		#require_once 'views/headerAdm.inc';
-		#echo "<h2>".$num_empresas."</h2>";
-	}
-	public function formTokensAdmin(){
-		require_once 'views/headerAdm.inc';				
-		require_once 'views/formTokensAdm.php'; 
-		$myController = new controller();
-		$myController->allTokens();	
-		require_once 'views/footerAdm.inc';            				
-	}
-	public function addTokenAsesor(){
-		$datos = $this->myModel->add_token_asesor($_REQUEST['token'],$_REQUEST['matr']);
-		if($datos > 0){
-			echo "SUCCESS";
-		}else{
-			echo "ERROR";
-		}
-	}
-	public function allTokens(){
-		$datos = $this->myModel->all_tokens();
-				
-		require_once 'views/list_tokens.php'; 
-		
-	}
-	#Mandar obtener el numero de asesor
-	public function myNumAsesorSession(){
-		$getAsesor = $this->myModel->get_no_asesor($_SESSION['matr']);
-		foreach ($getAsesor as $asesor) {
-			$nAse=$asesor['no_asesor'];
-		}
-		$_SESSION['numAsesor'] = $nAse;	
 	}
 	public function myListGroupsE1(){
 		session_start();
@@ -430,38 +408,80 @@ class controller{
 		}else{
 			echo "ERROR";
 		}
-	}	
-	#Mandar a llamar el formulario para recuperar contra
-	public function formRecoverPass(){
-   		require_once 'views/header.inc';	
-        require_once 'views/myPassRecover.php';        
-        require_once 'views/footer.inc';
 	}
-	public function recoverPass(){
-		$subject = "Sistema estancias y estadias RECOVER PASS";
-		$p="";
-		$destino = $_REQUEST['emai'];
-		$datos = $this->myModel->recover_pass($_REQUEST['emai']);
-		foreach ($datos as $dato) {
-			$p=$dato['password'];
-		}
-		$myMsn = "Excelente dia!! Tu contraseña es: ".$p;
-		try {
-			mail($destino,$subject, $myMsn);
-		} catch (Exception $e) {
-			echo "Error:".$e;
-		}
-		$myController = new controller();
-		$myController->Index();	
-	}
-	#Método para destruir variables de sesion;
-	public function closeSession(){
+	public function viewDataProcess(){
 		session_start();
-		session_destroy();
-		$myController = new controller();
-		$myController->Index();	
+		$datos = $this->myModel->get_all_data_alumno_process($_SESSION['idmater'],$_REQUEST['mat']);
+		require_once 'views/headerAsesor.inc';		
+		require_once 'views/viewDataProcess.php'; 
+		require_once 'views/footerAsesor.inc';
 	}
-
+	public function generateDocuments(){
+		session_start();
+		$datos = $this->myModel->generate_documents($_SESSION['idmater'],$_REQUEST['proc']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	public function formCalif(){
+		$matriculaDelAlumno = $_REQUEST['mat']; #variable oculta para reutilizarla
+		$nomb = $_REQUEST['nom'];
+		$pat = $_REQUEST['pater'];
+		$mat = $_REQUEST['mater'];
+		$nombreDelAlumno = $nomb." ".$pat." ".$mat;
+		require_once 'views/headerAsesor.inc';				
+		require_once 'views/formCalif.php'; 
+		require_once 'views/footerAsesor.inc';  
+	}
+	public function updateProcE1Calfc(){
+		session_start();	//La session para obtener el id de la materia
+		if ($_REQUEST['calf']>=7) { 
+			$estadoMat = "APROBADA";
+		}else{
+			$estadoMat= "REPROBADA";
+		}
+		$datos = $this->myModel->update_proc_calif($_REQUEST['calf'],$estadoMat,$_REQUEST['mat'],$_SESSION['idmater']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	#Mandar a llamar el formulario de los datos del asesor
+	public function formDataAsesor(){
+		session_start();
+		$datos = $this->myModel->get_matricula($_SESSION['matr']);
+		require_once 'views/headerAsesor.inc';		
+		require_once 'views/dataOfMyAccount.php';        
+		require_once 'views/footerAsesor.inc';
+	}
+						############################################
+						#################ADMIN######################
+						############################################
+	public function formTokensAdmin(){
+		require_once 'views/headerAdm.inc';				
+		require_once 'views/formTokensAdm.php'; 
+		$myController = new controller();
+		$myController->allTokens();	
+		require_once 'views/footerAdm.inc';            				
+	}
+	public function addTokenAsesor(){
+		$datos = $this->myModel->add_token_asesor($_REQUEST['token'],$_REQUEST['matr']);
+		if($datos > 0){
+			echo "SUCCESS";
+		}else{
+			echo "ERROR";
+		}
+	}
+	public function allTokens(){
+		$datos = $this->myModel->all_tokens();
+				
+		require_once 'views/list_tokens.php'; 
+		
+	}
+	
 }
 
 ?>
